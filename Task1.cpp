@@ -45,12 +45,16 @@ vector<float> Softmax(vector<float> v){
     for (int i = 0; i < v2.size();i++){
         v2[i] = v2[i]/pden;
     }
-    cout << v2[0]<<" "<<v2[1]<<endl;
     return v2;
 }
 
-void Sigmoid(){
-    
+vector<float> Sigmoid(vector<float> v){
+    for (int i = 0; i< v.size(); i++){
+        float temp = (1/(1 + exp((-1) * v[i]))); 
+        v[i] = temp;
+    }
+    //cout << v[0]<<" "<<v[1]<<endl;
+    return v;
 }
 
 vector<vector<float> > Relu(vector<vector<float> > v){
@@ -88,7 +92,7 @@ int main(){
     b = Tanh(a);
     
     vector<float> a = {1,2,3,4};
-    a = Softmax(a);
+    a = Sigmoid(a);
     */
 return 0;
 }
