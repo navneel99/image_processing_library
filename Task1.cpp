@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 
@@ -11,10 +12,20 @@ void Convolution(){
 
 } 
 
-//float* Relu(float arr[][]){
 
 
-void Tanh(){
+vector<vector<float> > Tanh(vector<vector<float> > v){
+    vector<float> row;
+    float ele;
+    for (int it = 0; it < v.size(); it++){
+        row = v.at(it);
+        for (int it2 = 0;it2 < row.size(); it2++){
+            ele = row.at(it2);
+            row[it2] = tanh(ele);
+        }
+        v[it] = row;
+    }
+    return v;
 
 }
 
@@ -47,7 +58,8 @@ vector<vector<float> > Relu(vector<vector<float> > v){
 } 
 
 int main(){
-    /*vector<vector<float>> a;
+    /*
+    vector<vector<float>> a,b;
     int r,c;
     cout << "Enter number of Rows and Columns: ";
     cin >> r >> c;
@@ -60,7 +72,9 @@ int main(){
             ele.push_back(f);
         }
         a.push_back(ele);
-    }*/
+    }
+    b = Tanh(a);
+    */
 return 0;
 }
 
