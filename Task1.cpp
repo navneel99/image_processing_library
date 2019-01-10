@@ -29,10 +29,29 @@ vector<vector<float> > Tanh(vector<vector<float> > v){
 
 }
 
-void MaxPooling(){
+vector<vector<float> > Padding(vector<vector<float> > mat, int pad){
+    for (int j = 0;j<mat.size();j++){
+        vector<float> row = mat.at(j);
+        for (int i = 0; i<pad;i++){
+            row.push_back(0);
+            row.emplace(row.begin(),0);
+        }
+        mat[j] = row;
+    }
+    int new_row_length = mat.size() + 2 * pad;
+    vector<float> zero_row(new_row_length);
+    for (int i = 0;i<pad;i++){
+        mat.push_back(zero_row);
+        mat.emplace(mat.begin(),zero_row);
+    }
+    return mat;
+}
+/*
+vector<vector<float> > MaxPooling(vector<vector<float> > img, vector<vector<float> > ker, int pad){
+
 
 }
-
+*/
 vector<float> Softmax(vector<float> v){
     vector<float> v2;
     float pden = 0.0;
@@ -53,7 +72,6 @@ vector<float> Sigmoid(vector<float> v){
         float temp = (1/(1 + exp((-1) * v[i]))); 
         v[i] = temp;
     }
-    //cout << v[0]<<" "<<v[1]<<endl;
     return v;
 }
 
@@ -74,7 +92,8 @@ vector<vector<float> > Relu(vector<vector<float> > v){
 } 
 
 int main(){
-    /*
+
+    
     vector<vector<float>> a,b;
     int r,c;
     cout << "Enter number of Rows and Columns: ";
@@ -89,10 +108,16 @@ int main(){
         }
         a.push_back(ele);
     }
+    /*
+    b = Padding(a,2);
+    cout << b.size()<<endl;
+    cout << b[0].size()<<endl;
+
+
     b = Tanh(a);
     
     vector<float> a = {1,2,3,4};
-    a = Sigmoid(a);
+    a = Softmax(a);
     */
 return 0;
 }
