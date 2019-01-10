@@ -8,8 +8,14 @@
 using namespace std;
 
 void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
+vector<vector<float> > Tanh(vector<vector<float> > v);
+vector<vector<float> > Padding(vector<vector<float> > mat, int pad);
+vector<vector<float> > MaxPooling(vector<vector<float> > img, vector<vector<float> > ker, int pad);
+vector<float> Softmax(vector<float> v);
+vector<float> Sigmoid(vector<float> v);
+vector<vector<float> > Relu(vector<vector<float> > v);
+
 int main(){
-    /*
     vector<vector<float>> a,b;
     int r,c;
     cout << "Enter number of Rows and Columns: ";
@@ -24,14 +30,20 @@ int main(){
         }
         a.push_back(ele);
     }
+    /*
+    b = Padding(a,2);
+    cout << b.size()<<endl;
+    cout << b[0].size()<<endl;
+
+
     b = Tanh(a);
     
     vector<float> a = {1,2,3,4};
-    a = Sigmoid(a);
+    a = Softmax(a);
     */
 return 0;
 }
-
+/*
 void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x){
   
   int ArrSize = arr.size();     //No. of rows
@@ -54,7 +66,7 @@ void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x){
   }
 
 } 
-
+*/
 
 
 vector<vector<float> > Tanh(vector<vector<float> > v){
@@ -89,12 +101,12 @@ vector<vector<float> > Padding(vector<vector<float> > mat, int pad){
     }
     return mat;
 }
-/*
+
 vector<vector<float> > MaxPooling(vector<vector<float> > img, vector<vector<float> > ker, int pad){
 
 
 }
-*/
+
 vector<float> Softmax(vector<float> v){
     vector<float> v2;
     float pden = 0.0;
@@ -134,34 +146,4 @@ vector<vector<float> > Relu(vector<vector<float> > v){
     return v;
 } 
 
-int main(){
-
-    
-    vector<vector<float>> a,b;
-    int r,c;
-    cout << "Enter number of Rows and Columns: ";
-    cin >> r >> c;
-    for(int i = 0; i<r; i++){
-        vector<float> ele;
-        for (int j = 0; j<c;j++){
-            float f;
-            cout << "Row "<<i<<", Column "<<j<<" :";
-            cin >> f;
-            ele.push_back(f);
-        }
-        a.push_back(ele);
-    }
-    /*
-    b = Padding(a,2);
-    cout << b.size()<<endl;
-    cout << b[0].size()<<endl;
-
-
-    b = Tanh(a);
-    
-    vector<float> a = {1,2,3,4};
-    a = Softmax(a);
-    */
-return 0;
-}
 
