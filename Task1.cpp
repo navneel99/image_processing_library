@@ -5,18 +5,22 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <string>
 using namespace std;
 
 void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
 vector<vector<float> > Tanh(vector<vector<float> > v);
 vector<vector<float> > Padding(vector<vector<float> > mat, int pad);
-vector<vector<float> > MaxPooling(vector<vector<float> > img, vector<vector<float> > ker, int pad);
+vector<vector<float> > Pooling(vector<vector<float> > img, int kernel_size, int pad, string whichone);
 vector<float> Softmax(vector<float> v);
 vector<float> Sigmoid(vector<float> v);
 vector<vector<float> > Relu(vector<vector<float> > v);
+float getMax(vector<vector<float> > v);
+float getAvg(vector<vector<float> > v);
+void dispVector(vector<vector<float> > v);
 
 int main(){
-    vector<vector<float>> a,b;
+    vector<vector<float>> a,b,c1;
     int r,c;
     cout << "Enter number of Rows and Columns: ";
     cin >> r >> c;
@@ -30,17 +34,11 @@ int main(){
         }
         a.push_back(ele);
     }
-    /*
-    b = Padding(a,2);
-    cout << b.size()<<endl;
-    cout << b[0].size()<<endl;
-
-
-    b = Tanh(a);
-    
-    vector<float> a = {1,2,3,4};
-    a = Softmax(a);
-    */
+    dispVector(a);
+    b = Pooling(a,2,0,"max");
+    dispVector(b);
+    c1 = Pooling(a,2,0,"avg");
+    dispVector(c1);
 return 0;
 }
 
@@ -72,6 +70,16 @@ void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x){
 } 
 
 
+void dispVector(vector<vector<float> > v){
+    int rows = v.size();
+    int cols = v[0].size();
+    for (int i = 0; i<rows;i++){
+        for (int j = 0; j<cols;j++){
+            cout << v[i][j]<< " ";
+        }
+        cout << "\n\n";
+    }
+}
 
 vector<vector<float> > Tanh(vector<vector<float> > v){
     vector<float> row;
@@ -106,8 +114,67 @@ vector<vector<float> > Padding(vector<vector<float> > mat, int pad){
     return mat;
 }
 
-vector<vector<float> > MaxPooling(vector<vector<float> > img, vector<vector<float> > ker, int pad){
+float getMax(vector<vector<float> > v){
+    int rows = v.size();
+    int cols = v[0].size();
+    float currMax;
+    for (int i = 0; i<rows;i++){
+        for (int j = 0; j<cols;j++){
+            if (i == 0 && j == 0){
+                currMax = v[i][j];
+            } else{
+                if (v[i][j]>currMax){
+                    currMax = v[i][j];
+                }
+            }
+        }
+    }
+    return currMax;
+}
 
+float getAvg(vector<vector<float> > v){
+    int rows = v.size();
+    int cols = v[0].size();
+    float currAvg;
+    for (int i = 0; i<rows;i++){
+        for (int j = 0; j<cols;j++){
+            currAvg = currAvg + v[i][j];
+        }
+    }
+    currAvg = currAvg/(rows * cols);
+    return currAvg;
+}
+
+vector<vector<float> > Pooling(vector<vector<float> > img, int kernel_size, int pad, string whichone){
+    vector<vector<float> > comp_img, padded_img;
+    padded_img = Padding(img,pad);
+    int padded_img_size = padded_img.size();
+    int comp_img_size = floor(padded_img_size/kernel_size);
+    for (int i = 0; i<comp_img_size;i++){//=kernel_size){
+        vector<float> comp_image_row;
+        for (int j = 0; j<comp_img_size;j++){//=kernel_size){
+            vector<vector<float> > actual_pool;
+            for (int k =0; k<kernel_size;k++){
+                vector<float> actual_pool_row;
+                for (int l = 0; l<kernel_size;l++){
+                    float currEle = padded_img[i*kernel_size+k][j*kernel_size+l];
+                    actual_pool_row.push_back(currEle);
+                }
+                actual_pool.push_back(actual_pool_row);
+            }
+
+            float ele;            
+            if (whichone == "max"){
+                ele = getMax(actual_pool);
+                comp_image_row.push_back(ele);
+            } else {
+                ele = getAvg(actual_pool);
+                comp_image_row.push_back(ele);
+            }
+        }
+        comp_img.push_back(comp_image_row);
+    }
+    return comp_img;
 
 }
 
