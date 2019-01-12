@@ -1,7 +1,7 @@
 //#include<bits/stdc++.h>
 //#include <cstdlib>
 //#include <cstdio>
-
+/*
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -18,9 +18,10 @@ vector<vector<float> > Relu(vector<vector<float> > v);
 float getMax(vector<vector<float> > v);
 float getAvg(vector<vector<float> > v);
 void dispVector(vector<vector<float> > v);
-
+*/
+#include "deps.hpp"
 int main(){
-    vector<vector<float>> a,b,c1;
+    vector<vector<float>> a,b,c1,c2;
     int r,c;
     cout << "Enter number of Rows and Columns: ";
     cin >> r >> c;
@@ -34,6 +35,7 @@ int main(){
         }
         a.push_back(ele);
     }
+
     dispVector(a);
     b = Pooling(a,2,0,"max");
     dispVector(b);
@@ -41,32 +43,31 @@ int main(){
     dispVector(c1);
 return 0;
 }
-
-void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x){
+/*
+void Convolution(vector<vector<float> >arr, vector<vector<float> >kernel, int x){
     int n=arr.size();
-  int m=kernel.size();
+    int m=kernel.size();
 
-  int tsize=n-m+1;
-  float O[tsize][tsize];
+    int tsize=n-m+1;
+    float O[tsize][tsize];
 
-  for(int i=0; i<n; i++){
-      for(int j=0; j<n; j++){
-         float term =0;
-          for(int ii=0; ii<m; ii++){
-              for(int jj=0; jj<m; jj++){
-                if(i+m<=n && j+m<=n){
-                      term = term + arr[i+ii][j+jj]*kernel[ii][jj];
-                }else{
-                  break;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            float term =0;
+            for(int ii=0; ii<m; ii++){
+                for(int jj=0; jj<m; jj++){
+                    if(i+m<=n && j+m<=n){
+                        term = term + arr[i+ii][j+jj]*kernel[ii][jj];
+                    }else{
+                        break;
+                    }
                 }
-              }
-          }
-              if((i+(m-3)/2)<tsize && (j+(m-3)/2)<tsize){
+            }
+            if((i+(m-3)/2)<tsize && (j+(m-3)/2)<tsize){
               O[i+(m-3)/2][j+(m-3)/2] = term;
-              }
-      }
-  }
-
+            }
+        }
+    }
 } 
 
 
@@ -216,5 +217,5 @@ vector<vector<float> > Relu(vector<vector<float> > v){
     }
     return v;
 } 
-
+*/
 
