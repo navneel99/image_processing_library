@@ -1,7 +1,3 @@
-/*
-#include <vector>
-using namespace std;
-*/
 #include "deps.hpp"
 vector<vector<float> > Padding(vector<vector<float> > mat, int pad){
     for (int j = 0;j<mat.size();j++){

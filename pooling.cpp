@@ -1,10 +1,4 @@
-/*#include <vector>
-#include <cmath>
-#include <string>
-using namespace std;
-*/
 #include "deps.hpp"
-
 float getMax(vector<vector<float> > v){
     int rows = v.size();
     int cols = v[0].size();

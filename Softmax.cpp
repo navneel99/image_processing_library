@@ -1,9 +1,3 @@
-/*
-//#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-*/
 #include "deps.hpp"
 
 vector<float> Softmax(vector<float> v){
@@ -19,12 +13,4 @@ vector<float> Softmax(vector<float> v){
         v2[i] = v2[i]/pden;
     }
     return v2;
-}
-
-vector<float> Sigmoid(vector<float> v){
-    for (int i = 0; i< v.size(); i++){
-        float temp = (1/(1 + exp((-1) * v[i]))); 
-        v[i] = temp;
-    }
-    return v;
 }

@@ -1,13 +1,9 @@
-/*#include <iostream>
-#include <vector>
-using namespace std;
-*/
 #include "deps.hpp"
 
-vector<vector<float>> convm(vector<vector<float>> arrr, vector<vector<float>> kernel, int x){
+vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x){
 
 //for padding    
-    vector<vector<float>> arr = padding(arrr, pad);
+    vector<vector<float>> arr = Padding(array, x);
 
     int n=arr.size();
     int m=kernel.size();
