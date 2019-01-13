@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
@@ -17,5 +19,5 @@ vector<vector<float> > Relu(vector<vector<float> > v);
 float getMax(vector<vector<float> > v);
 float getAvg(vector<vector<float> > v);
 void dispVector(vector<vector<float> > v);
-
+vector<vector<float> > inputFromText(string filename, int rows);
 #endif
