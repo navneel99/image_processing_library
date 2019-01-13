@@ -1,6 +1,9 @@
 #include "deps.hpp"
 
-void Convolution(vector<vector<float> >arr, vector<vector<float> >kernel, int x){
+void Convolution(vector<vector<float> >arrr, vector<vector<float> >kernel, int pad){
+
+    vector<vector<float>> arr = padding(arrr, pad);
+
     int n=arr.size();
     int m=kernel.size();
 
