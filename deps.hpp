@@ -9,7 +9,8 @@
 #include <sstream>
 
 using namespace std;
-void Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
+
+vector<vector<float> > Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
 vector<vector<float> > Tanh(vector<vector<float> > v);
 vector<vector<float> > Padding(vector<vector<float> > mat, int pad);
 vector<vector<float> > Pooling(vector<vector<float> > img, int kernel_size, int pad, string whichone);
