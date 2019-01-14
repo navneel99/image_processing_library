@@ -1,6 +1,6 @@
 #include "deps.hpp"
 
-vector<vector<float>> Convolution(vector<vector<float>>arrr, vector<vector<float>>kernel, int pad){
+vector<vector<float> > Convolution(vector<vector<float>>arrr, vector<vector<float>>kernel, int pad){
 
 // calling the padding the function 
     vector<vector<float>> arr = Padding(arrr, pad);
@@ -9,7 +9,7 @@ vector<vector<float>> Convolution(vector<vector<float>>arrr, vector<vector<float
     int m=kernel.size();
 
 //Defining the output vector O with predefined size
-    vector<vector<float>> O(n-m+1);
+    vector<vector<float> > O(n-m+1);
     int tsize=n-m+1;
     int count =-1; 
     int counter=tsize;
