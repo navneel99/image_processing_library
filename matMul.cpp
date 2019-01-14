@@ -2,7 +2,7 @@
 
 vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x){
 
-//for padding    
+//calling the padding  function   
     vector<vector<float>> arr = Padding(array, x);
 
     int n=arr.size();
@@ -12,7 +12,8 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     int k=0;
     float temp[t][m*m];
     float ker[m*m];
-    //making an temp kernel so that we can use it for multiplication
+
+//making an temp kernel so that we can use it for multiplication
     for(int i=0; i<m; i++){
       for(int j=0; j<m; j++){
         ker[k]=kernel[i][j];

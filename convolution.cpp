@@ -1,30 +1,45 @@
 #include "deps.hpp"
 
-void Convolution(vector<vector<float> >arrr, vector<vector<float> >kernel, int pad){
+vector<vector<float>> Convolution(vector<vector<float>>arrr, vector<vector<float>>kernel, int pad){
 
+// calling the padding the function 
     vector<vector<float>> arr = Padding(arrr, pad);
 
     int n=arr.size();
     int m=kernel.size();
 
+//Defining the output vector O with predefined size
+    vector<vector<float>> O(n-m+1);
     int tsize=n-m+1;
-    float O[tsize][tsize];
+    int count =-1; 
+    int counter=tsize;
 
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
+
+//Checking the constraints for input
+            if(i+m<=n && j+m<=n){
+              if(counter==tsize){
+               counter=0; 
+               count+=1;
+               O[count]=vector<float>(tsize);
+             }
+
+//Calculating the elementwise multiplication             
             float term =0;
-            for(int ii=0; ii<m; ii++){
+              for(int ii=0; ii<m; ii++){
                 for(int jj=0; jj<m; jj++){
-                    if(i+m<=n && j+m<=n){
                         term = term + arr[i+ii][j+jj]*kernel[ii][jj];
-                    }else{
-                        break;
-                    }
                 }
             }
-            if((i+(m-3)/2)<tsize && (j+(m-3)/2)<tsize){
-              O[i+(m-3)/2][j+(m-3)/2] = term;
+            O[count][counter]=term;
+            counter+=1;
+            }else{
+              break;
             }
         }
     }
-} 
+
+//returning the output vector    
+    return O;
+}
