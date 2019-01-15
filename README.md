@@ -43,3 +43,22 @@ To call the Tanh function on the matrix,
 <pre>
 $ ./yourcode.out Tanh <i>file_path</i>  <i>num_rows</i>  
 </pre>
+
+### Padding
+To call the padding function on the matrix,
+<pre>
+$ ./yourcode.out Padding <i>file_path</i> <i> num_rows</i> <i>pad_num</i>
+</pre>
+
+### Pooling 
+To call the pooling function,
+<pre>
+$ ./yourcode.out Pooling <i>file_path</i> <i>num_rows</i> <i>kernel_size</i> <i>pad_num</i> <i>type</i>
+</pre>
+
+### <b>Legend</b>:<br>
+file_path: Relative Path to the file<br>
+num_rows: Number of rows in the matrix to the above file_path<br>
+pad_num: Units of padding surrounding the actual matrix<br>
+kernel_size: Size of the kernel to apply the pooling function on<br>
+type: Either "max" pooling or "avg" pooling<br>
