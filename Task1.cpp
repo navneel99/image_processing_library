@@ -57,6 +57,25 @@ int main(int argc, char **argv){
         }
 
     } else if (p_name == "Convolution"){
+         int conv_rows = stoi(argv[3]);
+         int kernel = stoi(argv[4]);
+         int ker_rows = stoi(argv[5]);
+         int padder = stoi(argv[6]);
+         int type = stoi(argv[7]);
+
+         if(type == 1){
+        //when type = 1 call the normal convolution function 
+        //   vector<vector<float>> a = Convolution(f1_name, );
+         }else if(type == 0){
+        // when type = 0 call the convolution by matrix multiplication method
+        //  vector<vector<float>> a = convm(f1_name, );
+         }else{
+             cout<<"Error"<<endl;
+         }
+
+
+
+       //  vector<vector<float>> a = Convolution(f1_name, )
         // Currently only one argument is needed for convolution, argv[3] can be the type 
         // eg. "matrix_mul" or "convolution" or you can make one more if else statement
 

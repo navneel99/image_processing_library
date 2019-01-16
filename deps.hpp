@@ -10,6 +10,7 @@
 
 using namespace std;
 
+void Outputtofile(string s, vector<vector<float>> temp);
 vector<vector<float> > Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x);
 vector<vector<float> > Tanh(vector<vector<float> > v);
 vector<vector<float> > Padding(vector<vector<float> > mat, int pad);
