@@ -1,4 +1,5 @@
-#include "deps.hpp"
+//#include "deps.hpp"
+#include "alldeps.hpp"
 
 int main(int argc, char **argv){
     string outName = argv[0];

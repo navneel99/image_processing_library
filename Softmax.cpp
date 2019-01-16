@@ -1,4 +1,4 @@
-#include "deps.hpp"
+#include "softmax.hpp"
 
 vector<float> Softmax(vector<float> v){
     vector<float> v2;

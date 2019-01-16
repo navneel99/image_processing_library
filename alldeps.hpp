@@ -1,6 +1,6 @@
 #ifndef __ALL_DEPS__
 #define __ALL_DEPS__
-
+/*
 #include <vector>
 #include <iostream>
 #include <cmath>
@@ -22,4 +22,13 @@ float getMax(vector<vector<float> > v);
 float getAvg(vector<vector<float> > v);
 void dispVector(vector<vector<float> > v);
 vector<vector<float> > inputFromText(string filename, int rows);
+*/
+#include "common.hpp"
+#include "convolution.hpp"
+#include "pooling.hpp"
+#include "relu.hpp"
+#include "sigmoid.hpp"
+#include "softmax.hpp"
+#include "tanh.hpp"
+#include "io.hpp"
 #endif
