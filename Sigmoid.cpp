@@ -1,4 +1,4 @@
-#include "deps.hpp"
+#include "sigmoid.hpp"
 
 vector<float> Sigmoid(vector<float> v){
     for (int i = 0; i< v.size(); i++){

@@ -1,4 +1,4 @@
-#include "deps.hpp"
+#include "relu.hpp"
 vector<vector<float> > Relu(vector<vector<float> > v){
     vector<float> row;
     float ele;

@@ -1,4 +1,5 @@
-#include "deps.hpp"
+#include "pooling.hpp"
+#include "padding.hpp"
 float getMax(vector<vector<float> > v){
     int rows = v.size();
     int cols = v[0].size();
