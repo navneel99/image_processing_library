@@ -90,3 +90,6 @@ Convolution function takes *file_path*(string) as the relative path to the txt f
 *type*(string) is used to select how you wish to calculate the output either by using Convolution or by using the Matrix Multiplication method.<br>
 &nbsp;&nbsp;-&nbsp;**matrix** for selecting Matrix Multiplication method.<br>
 &nbsp;&nbsp;-&nbsp;**convolution** for selecting the convolution method.<br>
+
+### Changelog
+The file **Output.txt** saves all the programs run along with its outputs. This file saves outputs across sessions and clever use of this file will allow a user to retrieve the matrices for further processing.
