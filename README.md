@@ -14,18 +14,6 @@ This will output the .out file with name, **main.out**
 ## Functions
 The program has many functions which can be run individually with different set of arguments.
 
-### Convolution
-To call the Convolution function,
-<pre>
-$ ./main.out Sigmoid <i>file_path</i> <i>num_rows</i>
-</pre>
-
-### convm
-To call the convolution by matrix multiplication method
-<pre>
-$ ./main.out Sigmoid <i>file_path</i> <i>num_rows</i>
-</pre>
-
 ### Sigmoid
 
 The sigmoid activation function can be called using the syntax below:
