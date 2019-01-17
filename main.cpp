@@ -79,8 +79,8 @@ int main(int argc, char **argv){
          string pad = argv[6];
          int stride = stoi(argv[7]);
          string type = argv[8];
-         vector<vector<float>> input_matrix = inputFromText(f1_name, conv_rows, true);
-         vector<vector<float>> kernel = inputFromText(kfile_name, ker_rows, true);
+         vector<vector<float> > input_matrix = inputFromText(f1_name, conv_rows, true);
+         vector<vector<float> > kernel = inputFromText(kfile_name, ker_rows, true);
 
          int padder;
 
