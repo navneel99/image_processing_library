@@ -1,6 +1,7 @@
 #include "io.hpp"
+#include "Trans.hpp"
 
-vector<vector<float> > inputFromText(string filename,int rows, bool trans = true){
+vector<vector<float> > inputFromText(string filename,int rows, bool trans ){
 
     ifstream file(filename);
     string line;

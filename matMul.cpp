@@ -1,12 +1,12 @@
 #include "convolution.hpp"
-vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x){
+vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride){
 
 //calling the padding  function   
     vector<vector<float>> arr = Padding(array, x);
 
     int n=arr.size();
     int m=kernel.size();
-    int t=(n-m+1)*(n-m+1);
+    int t=(((n-m)/stride) +1)*(((n-m)/stride) +1);
 
     int k=0;
     float temp[t][m*m];
@@ -22,8 +22,8 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     k=0;
 
 //Making the matrix from the input matrix and kernel 
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++){
+    for(int i=0; i<n; i+=stride){
+        for(int j=0; j<n; j+=stride){
             int l=0;
             if(i+m<=n && j+m<=n){
             for(int ii=0; ii<m; ii++){
@@ -40,16 +40,16 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     }
 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
-vector<vector<float>> O(n-m+1);
-int counter=n-m+1;
+vector<vector<float>> O(((n-m)/stride)+1);
+int counter=((n-m)/stride)+1;
 int count=-1;
 
 for(int p=0; p<t; p++){
   int res=0;
-  if(counter==n-m+1){
+  if(counter == ((n-m)/stride)+1){
     counter=0;
     count+=1;
-    O[count]=vector<float>(n-m+1);
+    O[count]=vector<float>(((n-m)/stride)+1);
   }
   for(int q=0; q<m*m; q++){
     res=res+temp[p][q]*ker[q];
