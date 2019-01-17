@@ -1,4 +1,4 @@
-main: *.cpp *.hpp
-	g++ -o yourcode.out *.cpp *.hpp 
+main: *.cpp 
+	g++ -o main.out *.cpp 
 clean: 
-	rm *.out *.gchc
+	rm *.out *.gch
