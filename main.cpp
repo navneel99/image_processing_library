@@ -6,7 +6,7 @@ int main(int argc, char **argv){
     string p_name = argv[1];
     string f1_name = argv[2];
     if (p_name == "Relu"){
-        if (argc == 4){        
+        if ((argc == 4)){        
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Relu(a);
@@ -18,10 +18,17 @@ int main(int argc, char **argv){
 
     } else if (p_name == "Sigmoid"){  //Takes in a row vector
         if (argc == 3){
-        vector <vector <float> > a = inputFromText(f1_name,1,false);
-        vector<float> b = a[0]; //convert to a single row
+        vector <vector <float> > a = inputFromText(f1_name,1,false); //nx1 matrix
+        vector <float> b;
+        int temp = a.size();
+        for (int i = 0; i<temp;i++){
+            b.push_back(a[i][0]);
+        }
         b = Sigmoid(b);
-        a[0] = b; //Covert back to a matrix
+        for (int i = 0;i<temp;i++){
+            a[i][0] = b[i];
+        }
+        //a[0] = b; //Covert back to a matrix
         dispVector(a);
         } else{
             cout << "Please enter the arguments correctly!"<<endl;
@@ -29,9 +36,15 @@ int main(int argc, char **argv){
     } else if (p_name == "Softmax"){
         if (argc == 3){
         vector <vector <float> > a = inputFromText(f1_name,1,false);
-        vector<float> b = a[0]; //convert to a single row
+        vector<float> b; 
+        int temp = a.size();
+        for (int i = 0; i<temp;i++){
+            b.push_back(a[i][0]);
+        }
         b = Softmax(b);
-        a[0] = b; //Covert back to a matrix
+        for (int i = 0;i<temp;i++){
+            a[i][0] = b[i];
+        }
         dispVector(a);
         }else{
             cout << "Please enter the arguments correctly!"<<endl;

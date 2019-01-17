@@ -23,8 +23,10 @@ vector<vector<float> > inputFromText(string filename,int rows, bool trans){
             mat.push_back(row);
             row.clear();
         }
-           
+        
     }
+    //cout<< mat.size();
+    //dispVector(mat);
     file.close();
 
 
