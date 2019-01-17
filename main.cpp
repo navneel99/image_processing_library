@@ -1,7 +1,19 @@
-//#include "deps.hpp"
 #include "alldeps.hpp"
 
 int main(int argc, char **argv){
+
+    string erMessage = "Arguments have not been correctly entered.";
+    string erMessage2 = "Wrong Type Entered.";
+    string erMessage3 = "Please enter the arguments correctly!";
+    string outFile = "Output.txt";
+
+    ofstream file;
+    file.open(outFile,ios_base::app);
+    for (int i =0;i<argc;i++){
+        file << argv[i]<<" ";
+    }
+    file<<"\n"<<endl;
+    file.close();
     string outName = argv[0];
     string p_name = argv[1];
     string f1_name = argv[2];
@@ -10,11 +22,12 @@ int main(int argc, char **argv){
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Relu(a);
-        Outputtofile("Output.txt",a);
+        Outputtofile(outFile,a);
         dispVector(a);
         }
         else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
 
     } else if (p_name == "Sigmoid"){  //Takes in a row vector
@@ -29,11 +42,11 @@ int main(int argc, char **argv){
         for (int i = 0;i<temp;i++){
             a[i][0] = b[i];
         }
-        //a[0] = b; //Covert back to a matrix
-        Outputtofile("Output.txt",a);
+        Outputtofile(outFile,a);
         dispVector(a);
         } else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Softmax"){
         if (argc == 3){
@@ -47,20 +60,22 @@ int main(int argc, char **argv){
         for (int i = 0;i<temp;i++){
             a[i][0] = b[i];
         }
-        Outputtofile("Output.txt",a);
+        Outputtofile(outFile,a);
         dispVector(a);
         }else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Tanh"){
         if (argc == 4){
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Tanh(a);
-        Outputtofile("Output.txt",a);
+        Outputtofile(outFile,a);
         dispVector(a);
         } else {
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Padding"){
         if (argc == 5){
@@ -68,10 +83,11 @@ int main(int argc, char **argv){
         int padder = stoi(argv[4]);
         vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Padding(a,padder);
-        Outputtofile("Output.txt",a);
+        Outputtofile(outFile,a);
         dispVector(a);
         } else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Pooling"){
         if (argc == 7){
@@ -81,14 +97,16 @@ int main(int argc, char **argv){
         string type = argv[6];
         if (type != "max" && type != "avg"){
             cout << "Wrong Type Entered"<< endl;
+            Outputtofile(outFile,erMessage2);
         } else{
             vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
             a = Pooling(a,kernel_size,padder,type);
-            Outputtofile("Output.txt",a);
+            Outputtofile(outFile,a);
             dispVector(a);
         }
         } else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Convolution"){
         if (argc == 9){
@@ -109,34 +127,33 @@ int main(int argc, char **argv){
          }else if(pad == "valid"){
              padder = 0;
          }else{
-             cout<<"value of padding not correct";
+             cout<<"Value of padding not correct";
              exit;
          }
 
          if(type == "Convolution"){
         //when type = convolution call the normal convolution function 
            vector<vector<float>> a = Convolution(input_matrix, kernel, padder, stride);
-           Outputtofile("Output.txt",a);
+           Outputtofile(outFile,a);
            dispVector(a);
          }else if(type == "Matrix"){
         // when type = Matrix call the convolution by matrix multiplication method
           vector<vector<float>> a = convm(input_matrix, kernel, padder, stride);
-          Outputtofile("Output.txt",a);
+          Outputtofile(outFile,a);
           dispVector(a);
          }else{
              cout<<"Error"<<endl;
+             Outputtofile(outFile,erMessage2);
          }
         } else{
-            cout << "Please enter the arguments correctly!"<<endl;
+            cout << erMessage3<<endl;
+            Outputtofile(outFile,erMessage);
         }
-       //  vector<vector<float>> a = Convolution(f1_name, )
     } else{
-
         cout << "None match"<<endl;
         exit(1);
     }
-    ofstream file;
-    file.open("Output.txt",std::ios_base::app);
+    file.open(outFile,ios_base::app);
     file<<"End of the output\n"<<endl;
     file.close();
 return 0;

@@ -1,7 +1,48 @@
-5 11 
-7 13 
-5 11 
-7 13 
+./main.out Sigmoid exampleMat.txt 
+
+0.731059 
+0.880797 
+0.952574 
+0.982014 
+0.993307 
+0.997527 
+0.999089 
+0.999665 
+0.999877 
 End of the output
 
+./main.out Sigmoid exampleMat.txt lol 
+
+End of the output
+
+./main.out Softmax exampleMat.txt lol 
+
+Arguments have not been correctly entered.
+End of the output
+
+./main.out Softmax exampleMat.txt 
+
+0.000212079 
+0.00057649 
+0.00156706 
+0.00425972 
+0.0115791 
+0.0314753 
+0.0855588 
+0.232573 
+0.632199 
+End of the output
+
+./main.out Padding exampleMat.txt 3 3 
+
+0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 
+0 0 0 1 4 7 0 0 0 
+0 0 0 2 5 8 0 0 0 
+0 0 0 3 6 9 0 0 0 
+0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 
+End of the output
 

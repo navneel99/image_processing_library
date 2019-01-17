@@ -1,6 +1,6 @@
 #include "io.hpp"
 
-void Outputtofile(string name, vector<vector<float>> ar){
+void Outputtofile(string name, vector<vector<float> > ar){
     ofstream file;
     file.open(name,std::ios_base::app);
 
@@ -10,5 +10,11 @@ void Outputtofile(string name, vector<vector<float>> ar){
         }
         file<<"\n";
     }
+    file.close();
+}
+void Outputtofile(string name, string message){
+    ofstream file;
+    file.open(name,std::ios_base::app);
+    file <<message<<'\n';
     file.close();
 }
