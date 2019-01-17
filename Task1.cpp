@@ -6,15 +6,19 @@ int main(int argc, char **argv){
     string p_name = argv[1];
     string f1_name = argv[2];
     if (p_name == "Relu"){
-
+        if (argc == 4){        
         int num_rows = stoi(argv[3]);
-        vector< vector<float> > a = inputFromText(f1_name,num_rows);
+        vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Relu(a);
         dispVector(a);
+        }
+        else{
+            cout << "Wrong!"<<endl;
+        }
 
     } else if (p_name == "Sigmoid"){  //Takes in a row vector
 
-        vector <vector <float> > a = inputFromText(f1_name,1);
+        vector <vector <float> > a = inputFromText(f1_name,1,false);
         vector<float> b = a[0]; //convert to a single row
         b = Sigmoid(b);
         a[0] = b; //Covert back to a matrix
@@ -22,7 +26,7 @@ int main(int argc, char **argv){
    
     } else if (p_name == "Softmax"){
 
-        vector <vector <float> > a = inputFromText(f1_name,1);
+        vector <vector <float> > a = inputFromText(f1_name,1,false);
         vector<float> b = a[0]; //convert to a single row
         b = Softmax(b);
         a[0] = b; //Covert back to a matrix
@@ -31,7 +35,7 @@ int main(int argc, char **argv){
     } else if (p_name == "Tanh"){
         
         int num_rows = stoi(argv[3]);
-        vector< vector<float> > a = inputFromText(f1_name,num_rows);
+        vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Tanh(a);
         dispVector(a);
 
@@ -39,7 +43,7 @@ int main(int argc, char **argv){
 
         int num_rows = stoi(argv[3]);
         int padder = stoi(argv[4]);
-        vector<vector<float> > a = inputFromText(f1_name,num_rows);
+        vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Padding(a,padder);
         dispVector(a);
 
@@ -52,7 +56,7 @@ int main(int argc, char **argv){
         if (type != "max" && type != "avg"){
             cout << "Wrong Type Entered"<< endl;
         } else{
-            vector<vector<float> > a = inputFromText(f1_name,num_rows);
+            vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
             a = Pooling(a,kernel_size,padder,type);
             dispVector(a);
         }

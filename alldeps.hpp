@@ -31,4 +31,5 @@ vector<vector<float> > inputFromText(string filename, int rows);
 #include "softmax.hpp"
 #include "tanh.hpp"
 #include "io.hpp"
+#include "trans.hpp"
 #endif

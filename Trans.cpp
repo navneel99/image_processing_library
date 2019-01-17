@@ -1,5 +1,4 @@
-#include "common.hpp"
-
+#include "trans.hpp"
 //function to transpose the given matrix
 vector<vector<float>> Trans(vector<vector<float>> arr){
     int n=arr.size();
