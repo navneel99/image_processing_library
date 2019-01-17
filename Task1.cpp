@@ -94,11 +94,11 @@ int main(int argc, char **argv){
          }
 
          if(type == "convolution"){
-        //when type = 1 call the normal convolution function 
+        //when type = convolution call the normal convolution function 
            vector<vector<float>> a = Convolution(input_matrix, kernel, padder, stride);
            dispVector(a);
          }else if(type == "Matrix"){
-        // when type = 0 call the convolution by matrix multiplication method
+        // when type = Matrix call the convolution by matrix multiplication method
           vector<vector<float>> a = convm(input_matrix, kernel, padder, stride);
           dispVector(a);
          }else{
