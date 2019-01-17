@@ -13,42 +13,50 @@ int main(int argc, char **argv){
         dispVector(a);
         }
         else{
-            cout << "Wrong!"<<endl;
+            cout << "Please enter the arguments correctly!"<<endl;
         }
 
     } else if (p_name == "Sigmoid"){  //Takes in a row vector
-
+        if (argc == 3){
         vector <vector <float> > a = inputFromText(f1_name,1,false);
         vector<float> b = a[0]; //convert to a single row
         b = Sigmoid(b);
         a[0] = b; //Covert back to a matrix
         dispVector(a);
-   
+        } else{
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
     } else if (p_name == "Softmax"){
-
+        if (argc == 3){
         vector <vector <float> > a = inputFromText(f1_name,1,false);
         vector<float> b = a[0]; //convert to a single row
         b = Softmax(b);
         a[0] = b; //Covert back to a matrix
         dispVector(a);
-
+        }else{
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
     } else if (p_name == "Tanh"){
-        
+        if (argc == 4){
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Tanh(a);
         dispVector(a);
-
+        } else {
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
     } else if (p_name == "Padding"){
-
+        if (argc == 5){
         int num_rows = stoi(argv[3]);
         int padder = stoi(argv[4]);
         vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Padding(a,padder);
         dispVector(a);
-
+        } else{
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
     } else if (p_name == "Pooling"){
-        
+        if (argc == 7){
         int num_rows = stoi(argv[3]);
         int kernel_size = stoi(argv[4]);
         int padder = stoi(argv[5]);
@@ -60,8 +68,11 @@ int main(int argc, char **argv){
             a = Pooling(a,kernel_size,padder,type);
             dispVector(a);
         }
-
+        } else{
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
     } else if (p_name == "Convolution"){
+        if (argc == 8){
          int conv_rows = stoi(argv[3]);
          int kernel = stoi(argv[4]);
          int ker_rows = stoi(argv[5]);
@@ -77,14 +88,10 @@ int main(int argc, char **argv){
          }else{
              cout<<"Error"<<endl;
          }
-
-
-
+        } else{
+            cout << "Please enter the arguments correctly!"<<endl;
+        }
        //  vector<vector<float>> a = Convolution(f1_name, )
-        // Currently only one argument is needed for convolution, argv[3] can be the type 
-        // eg. "matrix_mul" or "convolution" or you can make one more if else statement
-
-
     } else{
 
         cout << "None match"<<endl;
