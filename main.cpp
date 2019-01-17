@@ -72,7 +72,7 @@ int main(int argc, char **argv){
             cout << "Please enter the arguments correctly!"<<endl;
         }
     } else if (p_name == "Convolution"){
-        if (argc == 8){
+        if (argc == 9){
          int conv_rows = stoi(argv[3]);
          string kfile_name = argv[4];
          int ker_rows = stoi(argv[5]);
@@ -86,6 +86,7 @@ int main(int argc, char **argv){
 
          if(pad == "same"){
              padder = (conv_rows - 1)*stride + ker_rows - conv_rows;
+             padder = padder/2;
          }else if(pad == "valid"){
              padder = 0;
          }else{
