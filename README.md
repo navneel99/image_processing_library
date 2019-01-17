@@ -86,3 +86,13 @@ Padding function takes *file_path* as the relative path to the txt file containi
 *type* is the type of pooling to use, **max** or **avg**. <br>
 #### Please note that Pooling Function does not implement strides and considers the size of the kernel to be equal to the stride itself
 
+## Convolution
+To call the Convolution function, 
+<pre>
+$ ./main.out Convolution <i>file_path</i> <i>num_rows</i> <i>kernel_path</i> <i>kernel_rows</i> <i>padding</i> <i>stride_value</i> <i>type</i>
+</pre>
+Convolution function takes *file_path* as the relative path to the txt file containing a **matrix** in the **column major** order.<br>
+*num_rows* is the user input of the number of rows present in the matrix given in the file.<br>
+*kernel_path* is the relative path to the txt file containing a **matrix** in the **column major** order.<br>
+*kernel_rows* is the user input of the number of rows present in the matrix given in the file.<br>
+*pad_num* is the number of zeros to add on each side of the matrix.<br>
