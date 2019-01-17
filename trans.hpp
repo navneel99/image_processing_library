@@ -1,5 +1,5 @@
-#ifndef trans_h
-#define trans_h
+#ifndef padding_h
+#define padding_h
 #include "common.hpp"
 vector<vector<float>> Trans(vector<vector<float>> arr);
 #endif
