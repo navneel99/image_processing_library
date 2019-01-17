@@ -17,13 +17,13 @@ The program has many functions which can be run individually with different set 
 ### Convolution
 To call the Convolution function,
 <pre>
-$ ./yourcode.out Sigmoid  <i>file_path</i> <i>num_rows</i>
+$ ./main.out Sigmoid <i>file_path</i> <i>num_rows</i>
 </pre>
 
 ### convm
 To call the convolution by matrix multiplication method
 <pre>
-$ ./yourcode.out Sigmoid  <i>file_path</i> <i>num_rows</i>
+$ ./main.out Sigmoid <i>file_path</i> <i>num_rows</i>
 </pre>
 
 ### Sigmoid
@@ -31,7 +31,7 @@ $ ./yourcode.out Sigmoid  <i>file_path</i> <i>num_rows</i>
 The sigmoid activation function can be called using the syntax below:
 
 <pre>
-$ ./main.out Sigmoid  <i>file_path</i>
+$ ./main.out Sigmoid <i>file_path</i>
 </pre>
 
 Here the file_path is the relative path fo the txt file containing a **vector**, for the function to be applied to. The function returns a vector after applying the Sigmoid function to each of its elements. 
@@ -41,7 +41,7 @@ Here the file_path is the relative path fo the txt file containing a **vector**,
 To call the Softmax function,
 
 <pre>
-$ ./yourcode.out Softmax  <i>file_path</i>
+$ ./main.out Softmax <i>file_path</i>
 </pre>
 
 Same as sigmoid, the *file_path* is the relative path fo the txt file containing a **vector**, for the function to be applied to. The function returns a vector after applying the Softmax function to each of its elements.
@@ -50,7 +50,7 @@ Same as sigmoid, the *file_path* is the relative path fo the txt file containing
 
 To call the Relu function on the matrix,
 <pre>
-$ ./yourcode.out Relu  <i>file_path</i>  <i>num_rows</i>  
+$ ./main.out Relu <i>file_path</i>  <i>num_rows</i>  
 </pre>
 
 The Relu function, takes the *file_path* of the txt file containing a **matrix** in the **column major** order. It returns a vector in the row major order after applying the Relu function to each of its elements.<br>
@@ -59,7 +59,7 @@ The Relu function, takes the *file_path* of the txt file containing a **matrix**
 
 To call the Tanh function on the matrix,
 <pre>
-$ ./yourcode.out Tanh <i>file_path</i>  <i>num_rows</i>  
+$ ./main.out Tanh <i>file_path</i>  <i>num_rows</i>  
 </pre>
 
 The Tanh function, takes the file_path of the txt file containing a **matrix** in the **column major** order. It returns a matrix in the row major order after applying the Relu function to each of its elements.<br>
@@ -68,7 +68,7 @@ The Tanh function, takes the file_path of the txt file containing a **matrix** i
 ### Padding
 To call the padding function on the matrix,
 <pre>
-$ ./yourcode.out Padding <i>file_path</i> <i> num_rows</i> <i>pad_num</i>
+$ ./main.out Padding <i>file_path</i> <i> num_rows</i> <i>pad_num</i>
 </pre>
 Padding function takes *file_path* as the relative path to the txt file containing a **matrix** in the **column major** order.<br>
 *num_rows* is the user input of the number of rows present in the matrix given in the file.<br>
@@ -77,7 +77,7 @@ Padding function takes *file_path* as the relative path to the txt file containi
 ### Pooling 
 To call the pooling function,
 <pre>
-$ ./yourcode.out Pooling <i>file_path</i> <i>num_rows</i> <i>kernel_size</i> <i>pad_num</i> <i>type</i>
+$ ./main.out Pooling <i>file_path</i> <i>num_rows</i> <i>kernel_size</i> <i>pad_num</i> <i>type</i>
 </pre>
 Padding function takes *file_path* as the relative path to the txt file containing a **matrix** in the **column major** order.<br>
 *num_rows* is the user input of the number of rows present in the matrix given in the file.<br>
