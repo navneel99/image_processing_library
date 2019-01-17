@@ -84,4 +84,5 @@ Padding function takes *file_path* as the relative path to the txt file containi
 *kernel_size* is an integer n, which will make the kernel nxn.<br>
 *pad_num* is the number of zeros to add on each side of the matrix.<br>
 *type* is the type of pooling to use, **max** or **avg**. <br>
+#### Please note that Pooling Function does not implement strides and considers the size of the kernel to be equal to the stride itself
 
