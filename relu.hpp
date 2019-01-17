@@ -1,5 +1,5 @@
-#ifndef tanh_h
-#define tanh_h
+#ifndef relu_h
+#define relu_h
 #include "common.hpp"
 vector<vector<float> > Relu(vector<vector<float> > v);
 #endif
