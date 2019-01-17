@@ -36,13 +36,17 @@ vector<vector<float> > Pooling(vector<vector<float> > img, int kernel_size, int 
     padded_img = Padding(img,pad);
     int padded_img_size = padded_img.size();
     int comp_img_size = floor(padded_img_size/kernel_size);
-    for (int i = 0; i<comp_img_size;i++){//=kernel_size){
+    for (int i = 0; i<comp_img_size;i++){
         vector<float> comp_image_row;
-        for (int j = 0; j<comp_img_size;j++){//=kernel_size){
+
+        for (int j = 0; j<comp_img_size;j++){
             vector<vector<float> > actual_pool;
+
             for (int k =0; k<kernel_size;k++){
                 vector<float> actual_pool_row;
+
                 for (int l = 0; l<kernel_size;l++){
+                    
                     float currEle = padded_img[i*kernel_size+k][j*kernel_size+l];
                     actual_pool_row.push_back(currEle);
                 }

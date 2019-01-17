@@ -8,16 +8,25 @@ vector<vector<float> > inputFromText(string filename,int rows, bool trans){
     float ele;
     vector<vector<float> > mat;
     int c = 0;
-    
+    vector<float> row;
     while (getline(file,line,'\n')){
-        vector<float> row;
+        /*
         stringstream ssline(line);
         while (ssline >> ele){
             c++;
             row.push_back((ele));
+        }*/
+        c++;
+        ele = stof(line); 
+        row.push_back(ele);
+        if (c%rows == 0){
+            mat.push_back(row);
+            row.clear();
         }
-        mat.push_back(row);
+        
     }
+    //cout<< mat.size();
+    //dispVector(mat);
     file.close();
 
 
