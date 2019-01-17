@@ -10,6 +10,7 @@ int main(int argc, char **argv){
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Relu(a);
+        Outputtofile("Output.txt",a);
         dispVector(a);
         }
         else{
@@ -29,6 +30,7 @@ int main(int argc, char **argv){
             a[i][0] = b[i];
         }
         //a[0] = b; //Covert back to a matrix
+        Outputtofile("Output.txt",a);
         dispVector(a);
         } else{
             cout << "Please enter the arguments correctly!"<<endl;
@@ -45,6 +47,7 @@ int main(int argc, char **argv){
         for (int i = 0;i<temp;i++){
             a[i][0] = b[i];
         }
+        Outputtofile("Output.txt",a);
         dispVector(a);
         }else{
             cout << "Please enter the arguments correctly!"<<endl;
@@ -54,6 +57,7 @@ int main(int argc, char **argv){
         int num_rows = stoi(argv[3]);
         vector< vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Tanh(a);
+        Outputtofile("Output.txt",a);
         dispVector(a);
         } else {
             cout << "Please enter the arguments correctly!"<<endl;
@@ -64,6 +68,7 @@ int main(int argc, char **argv){
         int padder = stoi(argv[4]);
         vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
         a = Padding(a,padder);
+        Outputtofile("Output.txt",a);
         dispVector(a);
         } else{
             cout << "Please enter the arguments correctly!"<<endl;
@@ -79,6 +84,7 @@ int main(int argc, char **argv){
         } else{
             vector<vector<float> > a = inputFromText(f1_name,num_rows,true);
             a = Pooling(a,kernel_size,padder,type);
+            Outputtofile("Output.txt",a);
             dispVector(a);
         }
         } else{
@@ -110,10 +116,12 @@ int main(int argc, char **argv){
          if(type == "convolution"){
         //when type = convolution call the normal convolution function 
            vector<vector<float>> a = Convolution(input_matrix, kernel, padder, stride);
+           Outputtofile("Output.txt",a);
            dispVector(a);
          }else if(type == "Matrix"){
         // when type = Matrix call the convolution by matrix multiplication method
           vector<vector<float>> a = convm(input_matrix, kernel, padder, stride);
+          Outputtofile("Output.txt",a);
           dispVector(a);
          }else{
              cout<<"Error"<<endl;
@@ -125,8 +133,11 @@ int main(int argc, char **argv){
     } else{
 
         cout << "None match"<<endl;
-
+        exit(1);
     }
-
+    ofstream file;
+    file.open("Output.txt",std::ios_base::app);
+    file<<"End of the output\n"<<endl;
+    file.close();
 return 0;
 }

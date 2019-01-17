@@ -2,7 +2,7 @@
 
 void Outputtofile(string name, vector<vector<float>> ar){
     ofstream file;
-    file.open(name);
+    file.open(name,std::ios_base::app);
 
     for(int i=0; i<ar.size(); i++){
         for(int j=0; j<ar[0].size(); j++){
