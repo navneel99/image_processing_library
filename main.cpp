@@ -113,7 +113,7 @@ int main(int argc, char **argv){
              exit;
          }
 
-         if(type == "convolution"){
+         if(type == "Convolution"){
         //when type = convolution call the normal convolution function 
            vector<vector<float>> a = Convolution(input_matrix, kernel, padder, stride);
            Outputtofile("Output.txt",a);
