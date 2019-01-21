@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-
+#include <cblas.h>
 using namespace std;
 
 #endif
