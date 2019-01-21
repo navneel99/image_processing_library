@@ -9,8 +9,8 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     int t=(((n-m)/stride) +1)*(((n-m)/stride) +1);
 
     int k=0;
-    float temp[t][m*m];
-    float ker[m*m];
+    vector<vector<float> > temp(t,vector<float>(m*m));
+    vector<float> ker(m*m);
 
 //making an temp kernel so that we can use it for multiplication
     for(int i=0; i<m; i++){
@@ -40,6 +40,10 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     }
 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
+
+vector<vector<float> > result = normalMatMul(temp,ker,n,m,t,stride);
+
+/*
 vector<vector<float>> O(((n-m)/stride)+1);
 int counter=((n-m)/stride)+1;
 int count=-1;
@@ -57,7 +61,29 @@ for(int p=0; p<t; p++){
   O[count][counter]=res;
   counter+=1;
 }
-
+*/
 //returning the vector 
-return O;
+return result;
+}
+
+vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
+  vector<vector<float>> O(((n-m)/stride)+1);
+  int counter=((n-m)/stride)+1;
+  int count=-1;
+
+  for(int p=0; p<t; p++){
+    int res=0;
+    if(counter == ((n-m)/stride)+1){
+      counter=0;
+      count+=1;
+      O[count]=vector<float>(((n-m)/stride)+1);
+    }
+    for(int q=0; q<m*m; q++){
+      res=res+temp[p][q]*ker[q];
+    }
+    O[count][counter]=res;
+    counter+=1;
+  }
+  return O;
+
 }

@@ -130,7 +130,7 @@ int main(int argc, char **argv){
              cout<<"Value of padding not correct";
              exit;
          }
-
+         
          if(type == "Convolution"){
         //when type = convolution call the normal convolution function 
            vector<vector<float>> a = Convolution(input_matrix, kernel, padder, stride);
