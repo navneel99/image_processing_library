@@ -77,7 +77,7 @@ Padding function takes *file_path*(string) as the relative path to the txt file 
 ## Convolution
 To call the Convolution function, 
 <pre>
-$ ./main.out Convolution <i>file_path</i> <i>num_rows</i> <i>kernel_path</i> <i>kernel_rows</i> <i>padding</i> <i>stride_value</i> <i>type</i>
+$ ./main.out Convolution <i>file_path</i> <i>num_rows</i> <i>kernel_path</i> <i>kernel_rows</i> <i>padding</i> <i>stride_value</i> <i>type</i> <i>[type2]</i>
 </pre>
 Convolution function takes *file_path*(string) as the relative path to the txt file containing a **matrix** in the **column major** order.<br>
 *num_rows*(int) is the user input of the number of rows present in the matrix given in the file.<br>
@@ -88,6 +88,8 @@ Convolution function takes *file_path*(string) as the relative path to the txt f
 &nbsp;&nbsp;-&nbsp;**valid** :when no padding is applied on the input matrix.<br>
 *stride_value*(int) is the stride value for calculating the Convolution.<br>
 *type*(string) is used to select how you wish to calculate the output either by using Convolution or by using the Matrix Multiplication method.<br>
+*type2*(string) is used for only the matrix multiplication method where you either write <i>pthreads</i> or <i>openBlas</i>or <i>MKL</i> depending on the library you want to use. Leaving it blank uses the **pthreads** implementation<br> 
+
 &nbsp;&nbsp;-&nbsp;**matrix** for selecting Matrix Multiplication method.<br>
 &nbsp;&nbsp;-&nbsp;**convolution** for selecting the convolution method.<br>
 

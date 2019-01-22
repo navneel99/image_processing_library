@@ -1,5 +1,5 @@
 #include "convolution.hpp"
-vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride){
+vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride,string type){
 
 //calling the padding  function   
     vector<vector<float>> arr = Padding(array, x);
@@ -40,13 +40,17 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
     }
 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
-
-vector<vector<float> > result = normalMatMul(temp,ker,n,m,t,stride);
-vector<vector<float> >test = cBlasImpl(temp,ker,n,m,t,stride);
+vector<vector<float> >result ;
+if (type == "MKL"){
+} else if (type == "openBlas"){
+  result = cBlasImpl(temp,ker,n,m,t,stride);
+} else{
+  result = normalMatMul(temp,ker,n,m,t,stride);
+}
 
 
 //returning the vector 
-return test;
+return result;
 }
 
 vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){

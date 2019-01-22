@@ -109,7 +109,7 @@ int main(int argc, char **argv){
             Outputtofile(outFile,erMessage);
         }
     } else if (p_name == "Convolution"){
-        if (argc == 9){
+        if (argc == 9 || argc == 10){
          int conv_rows = stoi(argv[3]);
          string kfile_name = argv[4];
          int ker_rows = stoi(argv[5]);
@@ -138,7 +138,13 @@ int main(int argc, char **argv){
            dispVector(a);
          }else if(type == "Matrix"){
         // when type = Matrix call the convolution by matrix multiplication method
-          vector<vector<float>> a = convm(input_matrix, kernel, padder, stride);
+            string type2;
+            if (argc == 9){
+              type2 = "pthreads";
+            }else{
+                type2 = argv[9];
+            }
+          vector<vector<float> > a = convm(input_matrix, kernel, padder, stride,type2);
           Outputtofile(outFile,a);
           dispVector(a);
          }else{
