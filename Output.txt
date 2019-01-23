@@ -301,3 +301,17 @@ End of the output
 0 0 0 
 End of the output
 
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 same 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 same 1 Matrix MKL 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
