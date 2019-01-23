@@ -7,4 +7,5 @@ vector<vector<float> > convm(vector<vector<float>> arr, vector<vector<float>> ke
 void* matMulFun(void* arg);
 vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride);
 vector<vector<float> >cBlasImpl(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride);
+vector<vector<float> >mklImpl(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride);
 #endif

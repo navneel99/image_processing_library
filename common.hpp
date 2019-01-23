@@ -6,8 +6,6 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <cblas.h>
-//#include "mkl.h"
 using namespace std;
 
 #endif

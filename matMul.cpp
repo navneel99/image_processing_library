@@ -1,5 +1,5 @@
 #include "convolution.hpp"
-vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride,string type){
+vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride,string type){
 
 //calling the padding  function   
     vector<vector<float>> arr = Padding(array, x);
@@ -42,6 +42,7 @@ vector<vector<float>> convm(vector<vector<float> > array, vector<vector<float> >
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
 vector<vector<float> >result ;
 if (type == "MKL"){
+  result = mklImpl(temp,ker,n,m,t,stride);
 } else if (type == "openBlas"){
   result = cBlasImpl(temp,ker,n,m,t,stride);
 } else{
@@ -73,29 +74,4 @@ vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> k
   }
   return O;
 
-}
-
-vector<vector<float> >cBlasImpl(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
-  double *A, *B, *C;
-  int s =sqrt(t);
-  vector<vector<float> > res(s,vector<float>(s));
-  A = new double[t*m*m];
-  B = new double[m*m];
-  C = new double[t];
-  for (int i=0;i<t;i++){
-    for (int j =0; j<m*m;j++){
-      A[i*m*m+j] = static_cast<double>(temp[i][j]);
-    }
-  }
-  for (int i =0; i<m*m;i++){
-    B[i] = static_cast<double>(ker[i]);
-  }
-  cblas_dgemm(CblasRowMajor,CblasNoTrans,CblasNoTrans,t,1,m*m,1,A,m*m,B,1,1,C,1);
-  //resultant matrix has shape tx1 now, need to change to sxs
-  for (int i =0;i<s;i++){
-    for (int j=0;j<s;j++){
-      res[i][j] = (float) C[i*s+j];
-    }
-  }
-  return res;
 }
