@@ -246,3 +246,5 @@ End of the output
 10 18 26 
 End of the output
 
+./a.out Convolution exampleMat.txt 4 kernel.txt 2 same 1 Matrix 
+
