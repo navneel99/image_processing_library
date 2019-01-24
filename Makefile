@@ -1,18 +1,22 @@
-
-
 compiler = g++
-intel = -m64 -I /opt/intel/mkl/include -L/opt/intel/mkl/lib/intel64 -Wl,--no-as-needed /opt/intel/mkl/lib/intel64/libmkl_scalapack_lp64.a /opt/intel/mkl/lib/intel64/libmkl_intel_lp64.a /opt/intel/mkl/lib/intel64/libmkl_gnu_thread.a /opt/intel/mkl/lib/intel64/libmkl_core.a /opt/intel/mkl/lib/intel64/libmkl_blacs_intelmpi_lp64.a -lgomp -lpthread -lm -ldl
-#output = 
+root = ~
+#root =/opt
+comm_lib_path = intel/mkl
+comm_lib = lib/intel64
+intel = -m64 -I $(root)/$(comm_lib_path)/include -L$(root)/$(comm_lib_path)/$(comm_lib) -Wl,--no-as-needed $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_scalapack_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_intel_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_gnu_thread.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_core.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_blacs_intelmpi_lp64.a -lgomp -lpthread -lm -ldl
 
 mainIn = convolution.cpp display.cpp inputFromText.cpp main.cpp matMul.cpp mkl.cpp openblas.cpp outfile.cpp padding.cpp pooling.cpp Pthread.cpp Relu.cpp Sigmoid.cpp Softmax.cpp Tanh.cpp Trans.cpp
+
 randomIn = display.cpp random.cpp Pthread.cpp mkl.cpp openblas.cpp
 
 main: $(mainIn)
-	$(compiler) -o main.out  $(mainIn) $(intel)
+	@echo "Compiling the 'main' function.This may take a while."
+	@$(compiler) -o main.out  $(mainIn) $(intel)
+	@echo "Compilation Complete. Your output file is 'main.out'."
 
 plot: $(randomIn)
-	$(compiler) -o plot.out $(randomIn) $(intel)
+	@echo "Compiling the 'plotting' function. This may take a while."
+	@$(compiler) -o plot.out $(randomIn) $(intel)
+	@echo "Compilation complete. Your output file is 'plot.out'."
 clean: 
 	rm *.out 
-
-#g++ -o main.out  display.cpp random.cpp Pthread.cpp -m64 -I ~/intel/mkl/include -L~/intel/mkl/lib/intel64 -Wl,--no-as-needed ~/intel/mkl/lib/intel64/libmkl_scalapack_lp64.a ~/intel/mkl/lib/intel64/libmkl_intel_lp64.a ~/intel/mkl/lib/intel64/libmkl_gnu_thread.a ~/intel/mkl/lib/intel64/libmkl_core.a ~/intel/mkl/lib/intel64/libmkl_blacs_intelmpi_lp64.a -lgomp -lpthread -lm -ldl

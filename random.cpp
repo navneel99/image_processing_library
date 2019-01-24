@@ -28,9 +28,34 @@ vector<float> randVector(int rows){
     return result;
 }
 
+float getTime(string type,vector<vector<float> > a,vector<float> b){
+    vector<float> answer;
+    auto start = high_resolution_clock::now();
+    if (type == "pthreads"){
+        answer = Pthread(a,b);
+    } else if(type == "openBlas"){
+        answer = cBlasImpl(a,b);
+    } else{
+        answer = mklImpl(a,b);
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop-start);
+    float time = duration.count();
+    return time;
+}
+
+float* getTimes(vector<vector<float> > a, vector<float> b){
+    float* arr = new float[3];
+    arr[0] = getTime("pthreads",a,b);
+    arr[1] = getTime("openBlas",a,b);
+    arr[2] = getTime("mkl",a,b);
+
+    return arr;
+}
 
 int main(int argc, char **argv){
     //cout << RAND_MAX;                   //2147483647    
+
     srand((int) time(0));
     int rows = stoi(argv[1]);
     int columns = stoi(argv[2]);
@@ -38,31 +63,10 @@ int main(int argc, char **argv){
     vector<vector<float> > a = randMatrix(rows,columns);
     vector<float> b = randVector(columns);
 
-
-    cout<<"Pthreads' Time in micro seconds: ";;
-    auto start = high_resolution_clock::now();
-    vector<float> answer = Pthread(a,b);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-
-    cout<<"openBlas' Time in micro seconds: ";;
-    start = high_resolution_clock::now();
-    answer = cBlasImpl(a,b);
-    stop = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-
-    cout<<"MKL's Time in micro seconds: ";;
-    start = high_resolution_clock::now();
-    answer = mklImpl(a,b);
-    stop = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-    
-
-
-
+    float* timePtr = getTimes(a,b);
+    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
+    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
+    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;    
     return 0; 
 }
 
