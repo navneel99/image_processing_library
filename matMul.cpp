@@ -54,7 +54,10 @@ if (type == "MKL"){
 return result;
 }
 
+
+//Multiplication using pthreads
 vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
+
   vector<vector<float>> O(((n-m)/stride)+1);
   int counter=((n-m)/stride)+1;
   int count=-1;
@@ -72,6 +75,11 @@ vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> k
     O[count][counter]=res;
     counter+=1;
   }
-  return O;
+
+  //calling the pthread function to get the result. This function is definied in the file named Pthread.cpp
+  vector<vector<float> > result = Pthread(temp,ker, m, t);
+
+  //returning the result
+  return result;
 
 }
