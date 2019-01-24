@@ -28,6 +28,21 @@ vector<float> randVector(int rows){
     return result;
 }
 
+float getTime(string type,vector<vector<float> > a,vector<float> b){
+    vector<float> answer;
+    auto start = high_resolution_clock::now();
+    if (type == "pthreads"){
+        answer = Pthread(a,b);
+    } else if(type == "openBlas"){
+        answer = cBlasImpl(a,b);
+    } else{
+        answer = mklImpl(a,b);
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop-start);
+    float time = duration.count();
+    return time;
+}
 
 int main(int argc, char **argv){
     //cout << RAND_MAX;                   //2147483647    
@@ -38,31 +53,13 @@ int main(int argc, char **argv){
     vector<vector<float> > a = randMatrix(rows,columns);
     vector<float> b = randVector(columns);
 
+    float p_time = getTime("pthreads",a,b);
+    float o_time = getTime("openBlas",a,b);
+    float m_time = getTime("mkl",a,b);
 
-    cout<<"Pthreads' Time in micro seconds: ";;
-    auto start = high_resolution_clock::now();
-    vector<float> answer = Pthread(a,b);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-
-    cout<<"openBlas' Time in micro seconds: ";;
-    start = high_resolution_clock::now();
-    answer = cBlasImpl(a,b);
-    stop = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-
-    cout<<"MKL's Time in micro seconds: ";;
-    start = high_resolution_clock::now();
-    answer = mklImpl(a,b);
-    stop = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(stop-start);
-    cout << duration.count()<<endl;
-    
-
-
-
+    cout<<"Pthreads' Time in micro seconds: "<<p_time<<endl;;
+    cout<<"openBlas' Time in micro seconds: "<<o_time<<endl;;
+    cout<<"MKL's Time in micro seconds: "<<m_time<<endl;;    
     return 0; 
 }
 
