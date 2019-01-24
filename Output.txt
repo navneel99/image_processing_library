@@ -356,3 +356,15 @@ End of the output
 10 18 26 
 End of the output
 
+./main.out Padding exampleMat.txt 4 2 
+
+0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 
+0 0 1 5 9 13 0 0 
+0 0 2 6 10 14 0 0 
+0 0 3 7 11 15 0 0 
+0 0 4 8 12 16 0 0 
+0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 
+End of the output
+
