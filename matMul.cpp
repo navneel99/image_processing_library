@@ -48,6 +48,9 @@ if (type == "MKL"){
 } else{
   result = Pthread(temp,ker);
 }
+  
+  
+
   vector<vector<float> > real_result = vectorToMatrix(result,t);
 
 //returning the vector 

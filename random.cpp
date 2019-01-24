@@ -3,6 +3,78 @@
 #include "convolution.hpp"
 #include "io.hpp"
 
+void Outputtofile(int iterate, int rows, int columns);
+vector<vector<float> > randMatrix(int rows,int columns);
+vector<float> randVector(int rows);
+float getTime(string type,vector<vector<float> > a,vector<float> b);
+float* getTimes(vector<vector<float> > a, vector<float> b);
+
+
+int main(int argc, char **argv){
+    //cout << RAND_MAX;                   //2147483647    
+    srand((int) time(0));
+
+    //coloumns = rows*columns of input kernel size
+    //rows = number of interations
+    int rows = stoi(argv[1]);
+    int columns = stoi(argv[2]);
+    int iterate = stoi(argv[3]);
+
+    if(iterate != 0){
+        Outputtofile(iterate, rows, columns);
+/*
+        remove("graph1pthread.txt");
+        remove("graph2openblas.txt");
+        remove("graph3mkl.txt");
+
+        for(int i=0; i<iterate; i++){
+        vector<vector<float> > a = randMatrix(rows,columns);
+        vector<float> b = randVector(columns);
+
+        float* timePtr = getTimes(a,b);
+
+        Outputtofile("graph1pthread.txt", i, timePtr[0]);
+        Outputtofile("graph2openblas.txt", i, timePtr[1]);
+        Outputtofile("graph3mkl.txt", i, timePtr[2]);
+
+    }*/
+    }else{
+        vector<vector<float> > a = randMatrix(rows,columns);
+        vector<float> b = randVector(columns);
+
+        float* timePtr = getTimes(a,b);
+        cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
+        cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
+        cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;
+    }    
+    return 0; 
+}
+
+
+
+void Outputtofile(int iterate, int rows, int columns){
+
+    ofstream file1, file2, file3;
+    file1.open("graph1pthread.dat");
+    file2.open("graph2openblas.dat");
+    file3.open("graph3mkl.dat");
+
+    for(int i=0; i<iterate; i++){
+
+        vector<vector<float> > a = randMatrix(rows,columns);
+        vector<float> b = randVector(columns);
+
+        float* timePtr = getTimes(a,b);
+
+        file1<<i<<" "<<timePtr[0]<<"\n";
+        file2<<i<<" "<<timePtr[1]<<"\n";
+        file3<<i<<" "<<timePtr[2]<<"\n";
+    }
+
+    file1.close();
+    file2.close();
+    file3.close();
+}
 
 //This file will generate matrix of random numbers and vectors. We will then input it to the 3 variations 
 //and note the respective times in a file. We will use GNU Plot next. This file should be independently 
@@ -51,22 +123,5 @@ float* getTimes(vector<vector<float> > a, vector<float> b){
     arr[2] = getTime("mkl",a,b);
 
     return arr;
-}
-
-int main(int argc, char **argv){
-    //cout << RAND_MAX;                   //2147483647    
-
-    srand((int) time(0));
-    int rows = stoi(argv[1]);
-    int columns = stoi(argv[2]);
-    int lol = sqrt(columns);
-    vector<vector<float> > a = randMatrix(rows,columns);
-    vector<float> b = randVector(columns);
-
-    float* timePtr = getTimes(a,b);
-    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
-    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
-    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;    
-    return 0; 
 }
 

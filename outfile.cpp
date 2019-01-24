@@ -12,6 +12,15 @@ void Outputtofile(string name, vector<vector<float> > ar){
     }
     file.close();
 }
+
+void Outputtofile(string name, int a, int b){
+    ofstream file;
+    file.open(name,std::ios_base::app);
+    file<<a<<" "<<b<<"\n";
+    file.close();
+}
+
+
 void Outputtofile(string name, string message){
     ofstream file;
     file.open(name,std::ios_base::app);

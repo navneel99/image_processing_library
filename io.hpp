@@ -8,4 +8,5 @@ void Outputtofile(string name, string message);
 void dispVector(vector<vector<float> > v);
 void dispVector(vector<float>  v);
 void Write(int size1, string name1);
+void Outputtofile(int iterate, int rows, int columns);
 #endif

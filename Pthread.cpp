@@ -60,24 +60,6 @@ for (int i =0; i< t; i++){
 }
 
 vector<float> rest = curr1.result;
-/*
-int s = pow(t,0.5);
 
-vector<vector<float> > tempres(s,vector<float>(s));
-
-
-//converting the answer we got in the form of vector<vector<float>> from vector<float>
-
-int counter = s;
-int count = -1;
-
-for(int i=0; i<t; i++){
-    if(counter == s){
-        counter = 0; 
-        count++; 
-    }
-    tempres[count][counter] = rest[i];
-    counter++; 
-}*/
 return rest;
 }
