@@ -54,7 +54,6 @@ curr1.result = may;
 for (int i =0; i< t; i++){
 // j will be 1; the number of columns of the resultant matrix
   curr1.row = i;
-  
   pthread_t tid;
   pthread_create(&tid,NULL,matMulFun, (void * ) &curr1);
   pthread_join(tid,NULL);

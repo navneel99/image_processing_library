@@ -10,3 +10,10 @@ void dispVector(vector<vector<float> > v){
         cout << "\n\n";
     }
 }
+void dispVector(vector<float>  v){
+    int rows = v.size();
+    for (int i = 0; i<rows;i++){
+            cout << v[i]<< " ";
+    }
+    cout<<"\n\n";
+}
