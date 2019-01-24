@@ -30,17 +30,28 @@ vector<float> randVector(int rows){
 
 float getTime(string type,vector<vector<float> > a,vector<float> b){
     vector<float> answer;
+    double *A, *B, *C;
+    if (type == "openBlas" || type == "mkl"){
+        A = createArray(a);
+        B = createArray(b);
+    }
     auto start = high_resolution_clock::now();
     if (type == "pthreads"){
         answer = Pthread(a,b);
     } else if(type == "openBlas"){
-        answer = cBlasImpl(a,b);
-    } else{
-        answer = mklImpl(a,b);
+        //answer = cBlasImpl(a,b);
+        C = cBlasMatMul(A,B);
+    } else if (type == "mkl"){
+        C = mklMatMul(A,B);
+    } else {
+        answer = normalMatMul(a,b);
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
     float time = duration.count();
+    if (type == "openBlas" || type == "mkl"){
+    answer = collectResult(C);
+    }
     return time;
 }
 
@@ -64,9 +75,11 @@ int main(int argc, char **argv){
     vector<float> b = randVector(columns);
 
     float* timePtr = getTimes(a,b);
-    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
-    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
-    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;    
+    float n_time = getTime("normal",a,b);
+    cout<<"Normal's time in micro seconds: "<<n_time<<endl;
+    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;
+    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;
+    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl; 
     return 0; 
 }
 
