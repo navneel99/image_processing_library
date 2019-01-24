@@ -1,8 +1,6 @@
 #include "convolution.hpp"
 #include <pthread.h>
 
-
-
 struct data
 {
   int row;
@@ -12,6 +10,7 @@ struct data
   vector<float> result;
   int m;
 };
+
 
 
 //bigmatrix is of dimension (((n-m)/stride)+1)*(((n-m)/stride)+1) x (m*m) := temp
@@ -36,51 +35,8 @@ void* matMulFun(void* arg){
 }
 
 
-
-vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride){
-
-//calling the padding  function   
-    vector<vector<float> > arr = Padding(array, x);
-
-     int n=arr.size();
-    int m=kernel.size();
-    int t=(((n-m)/stride) +1)*(((n-m)/stride) +1);
-
-
-    //float temp[t][m*m]; //the big matrix
-    //float ker[m*m];   //unrolled kernel
-	int k=0;
-    vector<vector<float> > temp(t,vector<float>(m*m));
-    vector<float> ker(m*m);
-
-//making an temp kernel so that we can use it for multiplication
-    for(int i=0; i<m; i++){
-      for(int j=0; j<m; j++){
-        ker[k]=kernel[i][j];
-        k+=1;
-      }
-    }
-    k=0;
-
-
-//Making the matrix from the input matrix and kernel 
-    for(int i=0; i<n; i+=stride){
-        for(int j=0; j<n; j+=stride){
-            int l=0;
-            if(i+m<=n && j+m<=n){
-            for(int ii=0; ii<m; ii++){
-              for(int jj=0; jj<m; jj++){
-                temp[k][l]=arr[i+ii][j+jj];
-                l+=1;
-              }
-             }
-             k+=1;
-            }else{
-              break;
-            }
-        }
-    }
-
+vector<vector<float> > Pthread(vector<vector<float> > temp, vector<float> ker, int m, int t){
+	
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
 //bigmatrix is of dimension (((n-m)/stride)+1)*(((n-m)/stride)+1) x (m*m) := temp
 // unrolled kernel of size m*mx1 := ker
@@ -105,14 +61,18 @@ for (int i =0; i< t; i++){
 }
 
 vector<float> rest = curr1.result;
+int s = pow(t,0.5);
 
-vector<vector<float> > tempres(((n-m)/stride) +1,vector<float>(((n-m)/stride) +1));
+vector<vector<float> > tempres(s,vector<float>(s));
 
-int counter = ((n-m)/stride) +1;
+
+//converting the answer we got in the form of vector<vector<float>> from vector<float>
+
+int counter = s;
 int count = -1;
 
 for(int i=0; i<t; i++){
-    if(counter == ((n-m)/stride) +1){
+    if(counter == s){
         counter = 0; 
         count++; 
     }
@@ -122,4 +82,3 @@ for(int i=0; i<t; i++){
 
 return tempres;
 }
-
