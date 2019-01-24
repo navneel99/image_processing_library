@@ -1,6 +1,19 @@
 #include "convolution.hpp"
 #include "mkl.h"
 
+
+double* mklMatMul(double* A, double* B){
+  double* C;
+
+  int sqM = sizeof(B)/sizeof(B[0]);
+  int full = sizeof(A)/sizeof(A[0]);
+  int t = full/sqM;
+  C = new double[t];
+  cblas_dgemm(CblasRowMajor,CblasNoTrans,CblasNoTrans,t,1,sqM,1,A,sqM,B,1,1,C,1);
+  return C;
+}
+
+
 vector<float> mklImpl(vector<vector<float> > temp, vector<float> ker){
   int t = temp.size();
   int m = sqrt(ker.size());

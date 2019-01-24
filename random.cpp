@@ -22,22 +22,6 @@ int main(int argc, char **argv){
 
     if(iterate != 0){
         Outputtofile(iterate, rows, columns);
-/*
-        remove("graph1pthread.txt");
-        remove("graph2openblas.txt");
-        remove("graph3mkl.txt");
-
-        for(int i=0; i<iterate; i++){
-        vector<vector<float> > a = randMatrix(rows,columns);
-        vector<float> b = randVector(columns);
-
-        float* timePtr = getTimes(a,b);
-
-        Outputtofile("graph1pthread.txt", i, timePtr[0]);
-        Outputtofile("graph2openblas.txt", i, timePtr[1]);
-        Outputtofile("graph3mkl.txt", i, timePtr[2]);
-
-    }*/
     }else{
         vector<vector<float> > a = randMatrix(rows,columns);
         vector<float> b = randVector(columns);
@@ -102,17 +86,28 @@ vector<float> randVector(int rows){
 
 float getTime(string type,vector<vector<float> > a,vector<float> b){
     vector<float> answer;
+    double *A, *B, *C;
+    if (type == "openBlas" || type == "mkl"){
+        A = createArray(a);
+        B = createArray(b);
+    }
     auto start = high_resolution_clock::now();
     if (type == "pthreads"){
         answer = Pthread(a,b);
     } else if(type == "openBlas"){
-        answer = cBlasImpl(a,b);
-    } else{
-        answer = mklImpl(a,b);
+        //answer = cBlasImpl(a,b);
+        C = cBlasMatMul(A,B);
+    } else if (type == "mkl"){
+        C = mklMatMul(A,B);
+    } else {
+        answer = normalMatMul(a,b);
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
     float time = duration.count();
+    if (type == "openBlas" || type == "mkl"){
+    answer = collectResult(C);
+    }
     return time;
 }
 
@@ -124,4 +119,23 @@ float* getTimes(vector<vector<float> > a, vector<float> b){
 
     return arr;
 }
+
+/*int main(int argc, char **argv){
+    //cout << RAND_MAX;                   //2147483647    
+
+    srand((int) time(0));
+    int rows = stoi(argv[1]);
+    int columns = stoi(argv[2]);
+    int lol = sqrt(columns);
+    vector<vector<float> > a = randMatrix(rows,columns);
+    vector<float> b = randVector(columns);
+
+    float* timePtr = getTimes(a,b);
+    float n_time = getTime("normal",a,b);
+    cout<<"Normal's time in micro seconds: "<<n_time<<endl;
+    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;
+    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;
+    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl; 
+    return 0; 
+}*/
 
