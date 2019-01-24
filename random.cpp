@@ -44,8 +44,18 @@ float getTime(string type,vector<vector<float> > a,vector<float> b){
     return time;
 }
 
+float* getTimes(vector<vector<float> > a, vector<float> b){
+    float* arr = new float[3];
+    arr[0] = getTime("pthreads",a,b);
+    arr[1] = getTime("openBlas",a,b);
+    arr[2] = getTime("mkl",a,b);
+
+    return arr;
+}
+
 int main(int argc, char **argv){
     //cout << RAND_MAX;                   //2147483647    
+
     srand((int) time(0));
     int rows = stoi(argv[1]);
     int columns = stoi(argv[2]);
@@ -53,13 +63,10 @@ int main(int argc, char **argv){
     vector<vector<float> > a = randMatrix(rows,columns);
     vector<float> b = randVector(columns);
 
-    float p_time = getTime("pthreads",a,b);
-    float o_time = getTime("openBlas",a,b);
-    float m_time = getTime("mkl",a,b);
-
-    cout<<"Pthreads' Time in micro seconds: "<<p_time<<endl;;
-    cout<<"openBlas' Time in micro seconds: "<<o_time<<endl;;
-    cout<<"MKL's Time in micro seconds: "<<m_time<<endl;;    
+    float* timePtr = getTimes(a,b);
+    cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
+    cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
+    cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;    
     return 0; 
 }
 
