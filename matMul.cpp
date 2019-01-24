@@ -42,11 +42,11 @@ vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
 vector<vector<float> >result ;
 if (type == "MKL"){
-  result = mklImpl(temp,ker,n,m,t,stride);
+  result = mklImpl(temp,ker,m,t);
 } else if (type == "openBlas"){
-  result = cBlasImpl(temp,ker,n,m,t,stride);
+  result = cBlasImpl(temp,ker,m,t);
 } else{
-  result = normalMatMul(temp,ker,n,m,t,stride);
+  result = Pthread(temp,ker,m,t);
 }
 
 

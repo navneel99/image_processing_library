@@ -8,4 +8,5 @@ void* matMulFun(void* arg);
 vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride);
 vector<vector<float> >cBlasImpl(vector<vector<float> > temp, vector<float> ker,int m,int t);
 vector<vector<float> >mklImpl(vector<vector<float> > temp, vector<float> ker,int m,int t);
+vector<vector<float> > Pthread(vector<vector<float> > temp, vector<float> ker, int m, int t);
 #endif
