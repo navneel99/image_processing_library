@@ -40,23 +40,42 @@ vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> 
     }
 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
-vector<vector<float> >result ;
+vector<float> result ;
 if (type == "MKL"){
-  result = mklImpl(temp,ker,m,t);
+  result = mklImpl(temp,ker);
 } else if (type == "openBlas"){
-  result = cBlasImpl(temp,ker,m,t);
+  result = cBlasImpl(temp,ker);
 } else{
-  result = Pthread(temp,ker,m,t);
+  result = Pthread(temp,ker);
 }
-
+  vector<vector<float> > real_result = vectorToMatrix(result,t);
 
 //returning the vector 
-return result;
+return real_result;
+}
+
+vector<vector<float> >vectorToMatrix(vector<float> v, int t){
+  int s = pow(t,0.5);
+  vector<vector<float> > tempres(s,vector<float>(s));
+//converting the answer we got in the form of vector<vector<float>> from vector<float>
+
+  int counter = s;
+  int count = -1;
+
+  for(int i=0; i<t; i++){
+      if(counter == s){
+          counter = 0; 
+          count++; 
+      }
+      tempres[count][counter] = v[i];
+      counter++; 
+  }
+  return tempres;
 }
 
 
 //Multiplication using pthreads
-vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
+vector<float>  normalMatMul(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
 
   vector<vector<float>> O(((n-m)/stride)+1);
   int counter=((n-m)/stride)+1;
@@ -77,7 +96,7 @@ vector<vector<float> > normalMatMul(vector<vector<float> > temp, vector<float> k
   }
 
   //calling the pthread function to get the result. This function is definied in the file named Pthread.cpp
-  vector<vector<float> > result = Pthread(temp,ker, m, t);
+  vector<float>  result = Pthread(temp,ker);
 
   //returning the result
   return result;

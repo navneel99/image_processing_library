@@ -34,13 +34,13 @@ void* matMulFun(void* arg){
   pthread_exit(NULL);
 }
 
-
-vector<vector<float> > Pthread(vector<vector<float> > temp, vector<float> ker, int m, int t){
+vector<float>  Pthread(vector<vector<float> > temp, vector<float> ker){
 	
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
 //bigmatrix is of dimension (((n-m)/stride)+1)*(((n-m)/stride)+1) x (m*m) := temp
 // unrolled kernel of size m*mx1 := ker
-
+int t = temp.size();
+int m = sqrt(ker.size());
 vector<float> may(t);
 
 data curr1;
@@ -60,6 +60,7 @@ for (int i =0; i< t; i++){
 }
 
 vector<float> rest = curr1.result;
+/*
 int s = pow(t,0.5);
 
 vector<vector<float> > tempres(s,vector<float>(s));
@@ -77,7 +78,6 @@ for(int i=0; i<t; i++){
     }
     tempres[count][counter] = rest[i];
     counter++; 
-}
-
-return tempres;
+}*/
+return rest;
 }
