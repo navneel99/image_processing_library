@@ -1,7 +1,7 @@
 #include "convolution.hpp"
 #include <cblas.h>
 
-vector<vector<float> >cBlasImpl(vector<vector<float> > temp, vector<float> ker,int n,int m,int t,int stride){
+vector<vector<float> >cBlasImpl(vector<vector<float> > temp, vector<float> ker,int m,int t){
   double *A, *B, *C;
   int s =sqrt(t);
   vector<vector<float> > res(s,vector<float>(s));

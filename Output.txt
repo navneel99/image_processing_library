@@ -315,3 +315,9 @@ End of the output
 10 18 26 
 End of the output
 
+./main.out test 
+
+./main.out test fooll aa 
+
+./main.out test fooll aa 
+
