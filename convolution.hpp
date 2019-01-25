@@ -5,6 +5,7 @@
 vector<vector<float> > Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x, int stride);
 vector<vector<float> > convm(vector<vector<float>> arr, vector<vector<float>> kernel, int x, int stride,string type);
 void* matMulFun(void* arg);
+void* multi(void* arg);
 vector<float> normalMatMul(vector<vector<float> > temp, vector<float> ker);
 vector<float> cBlasImpl(vector<vector<float> > temp, vector<float> ker);
 vector<float> mklImpl(vector<vector<float> > temp, vector<float> ker);

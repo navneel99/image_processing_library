@@ -1,0 +1,65 @@
+#include "convolution.hpp"
+#include <pthread.h>
+struct data
+{
+  int row;
+  int column;
+  vector<float> result;
+  int m;
+};
+
+vector<vector<float> > Matrix;
+vector<float> kernel;
+
+//bigmatrix is of dimension (((n-m)/stride)+1)*(((n-m)/stride)+1) x (m*m) := temp
+// unrolled kernel of size m*mx1 := ker
+
+void* matMulFun(void* arg){
+  data* curr;
+  curr = (data*) arg;
+  int unr_ker_size = (curr->m)*(curr->m);
+
+  float sum; 
+  sum = 0;
+
+  for (int j =0; j<unr_ker_size;j++){
+    sum += Matrix[curr->row][j] * kernel[j];
+  }
+  
+  (curr->result)[curr->row] = sum;
+  pthread_exit(NULL);
+}
+
+vector<float>  Pthread(vector<vector<float> > temp, vector<float> ker){
+	
+//Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
+//bigmatrix is of dimension (((n-m)/stride)+1)*(((n-m)/stride)+1) x (m*m) := temp
+// unrolled kernel of size m*mx1 := ker
+int t = temp.size();
+int m = sqrt(ker.size());
+vector<float> may(t);
+Matrix = temp;
+kernel = ker;
+data curr1;
+
+curr1.m = m; 
+curr1.row = 0; 
+curr1.column = 1;
+curr1.result = may;
+
+pthread_t tid[t];
+
+for (int i =0; i< t; i++){
+// j will be 1; the number of columns of the resultant matrix
+  curr1.row = i;
+  //pthread_t tid;
+  pthread_create(&tid[i],NULL,matMulFun, (void * ) &curr1);
+}
+
+for (int i= 0; i<t; i++ ){
+  pthread_join(tid[i],NULL);
+}
+
+vector<float> rest = curr1.result;
+return rest;
+}
