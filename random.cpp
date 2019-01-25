@@ -40,9 +40,7 @@ int main(int argc, char **argv){
 void Outputtofile(int iterate, int rows, int columns){
 
     ofstream file1, file2, file3;
-    file1.open("graph1pthread.dat");
-    file2.open("graph2openblas.dat");
-    file3.open("graph3mkl.dat");
+    file1.open("graph.dat");
 
     for(int i=0; i<iterate; i++){
 
@@ -51,14 +49,10 @@ void Outputtofile(int iterate, int rows, int columns){
 
         float* timePtr = getTimes(a,b);
 
-        file1<<i<<" "<<timePtr[0]<<"\n";
-        file2<<i<<" "<<timePtr[1]<<"\n";
-        file3<<i<<" "<<timePtr[2]<<"\n";
+        file1<<i<<" "<<timePtr[0]<<" "<<timePtr[1]<<" "<< timePtr[2]<<"\n";
     }
 
     file1.close();
-    file2.close();
-    file3.close();
 }
 
 //This file will generate matrix of random numbers and vectors. We will then input it to the 3 variations 
