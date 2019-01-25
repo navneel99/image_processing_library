@@ -7,7 +7,7 @@ intel = -m64 -I $(root)/$(comm_lib_path)/include -L$(root)/$(comm_lib_path)/$(co
 
 mainIn = convolution.cpp display.cpp inputFromText.cpp main.cpp matMul.cpp mkl.cpp openblas.cpp outfile.cpp padding.cpp pooling.cpp Pthread.cpp Relu.cpp Sigmoid.cpp Softmax.cpp Tanh.cpp Trans.cpp normalMatMul.cpp
 
-randomIn = display.cpp random.cpp Pthread.cpp mkl.cpp openblas.cpp normalMatMul.cpp
+randomIn = display.cpp random.cpp Pthread.cpp mkl.cpp openblas.cpp normalMatMul.cpp outfile.cpp
 
 main: $(mainIn)
 	@echo "Compiling the 'main' function.This may take a while."

@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <tuple>
 using namespace std;
 using namespace chrono;
 #endif

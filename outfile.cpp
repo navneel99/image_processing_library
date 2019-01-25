@@ -27,3 +27,12 @@ void Outputtofile(string name, string message){
     file <<message<<'\n';
     file.close();
 }
+void Outputtofile(string name, vector<float> ar){
+    ofstream file;
+    file.open(name,std::ios_base::app);
+    for(int i=0; i<ar.size(); i++){
+        file<<ar[i]<<" ";
+        file<<"\n";
+    }
+    file.close();
+}
