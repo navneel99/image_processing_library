@@ -14,42 +14,59 @@ float* getTimes(vector<vector<float> > a, vector<float> b);
 int main(int argc, char **argv){
     //cout << RAND_MAX;                   //2147483647    
     srand((int) time(0));
-
     //coloumns = rows*columns of input kernel size
     //rows = number of interations
     int rows = stoi(argv[1]);
     int columns = stoi(argv[2]);
     int iterate = stoi(argv[3]);
-
     if(iterate != 0){
         Outputtofile(iterate, rows, columns);
     }else{
         vector<vector<float> > a = randMatrix(rows,columns);
         vector<float> b = randVector(columns);
-
-        float* timePtr = getTimes(a,b);
-        cout<<"Pthreads' Time in micro seconds: "<<timePtr[0]<<endl;;
-        cout<<"openBlas' Time in micro seconds: "<<timePtr[1]<<endl;;
-        cout<<"MKL's Time in micro seconds: "<<timePtr[2]<<endl;;
+        //float* timePtr = getTimes(a,b);
+        float mean[3] ={0,0};
+        float* timePtr;
+        for(int i = 0; i<150; i++){
+            //cout<<i<<"th iteration of getTimes()"<<endl;
+            timePtr = getTimes(a,b);
+            mean[0]+=timePtr[0];
+            mean[1]+=timePtr[1];
+        }
+        //cout<<mean[0];
+        float pthread_time = getTime("pthread",a,b); 
+        mean[0]/=150;mean[1]/=150;
+        cout<<"Pthreads' Time in micro seconds: "<<pthread_time<<endl;;
+        cout<<"openBlas' Time in micro seconds: "<<mean[0]<<endl;;
+        cout<<"MKL's Time in micro seconds: "<<mean[1]<<endl;;
     }    
     return 0; 
 }
 
 
-
 void Outputtofile(int iterate, int rows, int columns){
-
     ofstream file1, file2, file3;
     file1.open("graph.dat");
 
     for(int i=0; i<iterate; i++){
-
-        vector<vector<float> > a = randMatrix(rows,columns);
+        vector<vector<float> > a = randMatrix(rows+i,columns);
         vector<float> b = randVector(columns);
 
-        float* timePtr = getTimes(a,b);
-
-        file1<<i<<" "<<timePtr[0]<<" "<<timePtr[1]<<" "<< timePtr[2]<<"\n";
+        float mean[2] ={0,0};
+        float pthread_time;
+        float* timePtr;
+        
+        for(int i = 0; i<75; i++){
+            timePtr = getTimes(a,b);
+            mean[0]+=timePtr[0];mean[1]+=timePtr[1];
+        }
+        
+        //pthread_time = getTime("pthread",a,b);
+        
+        mean[0]/=75;
+        mean[1]/=75;
+        
+        file1<<i<<" "<<pthread_time<<" "<<mean[0]<<" "<< mean[1]<<"\n";
     }
 
     file1.close();
@@ -117,11 +134,9 @@ float getTime(string type,vector<vector<float> > a,vector<float> b){
 }
 
 float* getTimes(vector<vector<float> > a, vector<float> b){
-    float* arr = new float[3];
-    arr[0] = getTime("pthreads",a,b);
-    arr[1] = getTime("openBlas",a,b);
-    arr[2] = getTime("mkl",a,b);
-
+    float* arr = new float[2];
+    arr[0] = getTime("openBlas",a,b);
+    arr[1] = getTime("mkl",a,b);
     return arr;
 }
 

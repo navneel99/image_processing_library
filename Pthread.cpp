@@ -43,9 +43,9 @@ vector<float> Pthread(vector<vector<float> > temp, vector<float> ker)
     } 
   
     // joining and waiting for all threads to complete 
-    for (int i = 0; i < MAX_THREAD; i++)  
+    for (int i = 0; i < MAX_THREAD; i++){
         pthread_join(threads[i], NULL);     
-  
-
+    }  
+    
     return matC; 
 }
