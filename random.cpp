@@ -2,6 +2,7 @@
 #include <ctime>
 #include "convolution.hpp"
 #include "io.hpp"
+#include <string>
 
 void Outputtofile(int iterate, int rows, int columns);
 vector<vector<float> > randMatrix(int rows,int columns);
@@ -68,7 +69,7 @@ vector<vector<float> > randMatrix(int rows,int columns){
     vector<vector<float> > result(rows,vector<float>(columns));
     for ( int i = 0; i<rows;i++){
         for (int j = 0; j<columns;j++){
-            result[i][j] = (rand()%100);
+            result[i][j] = ((rand()%200)-100);
         }
     }
     return result;
@@ -78,7 +79,7 @@ vector<float> randVector(int rows){
     vector<float> result;
     for ( int i = 0; i<rows;i++){
         //cout<<"Tets";
-        result.push_back(rand()%1000);
+        result.push_back((rand()%200)-100);
     }
     //dispVector(result);
     return result;
@@ -86,27 +87,37 @@ vector<float> randVector(int rows){
 
 float getTime(string type,vector<vector<float> > a,vector<float> b){
     vector<float> answer;
-    double *A, *B, *C;
+    //double *A, *B, *C;
+    //int len_a,len_b,len_c;
+    tuple<double*,int> At,Bt,Ct;
     if (type == "openBlas" || type == "mkl"){
-        A = createArray(a);
-        B = createArray(b);
+        At = createArray(a);
+        Bt = createArray(b);
     }
-    auto start = high_resolution_clock::now();
-    if (type == "pthreads"){
-        answer = Pthread(a,b);
+    high_resolution_clock::time_point start;
+    high_resolution_clock::time_point stop;
+    if (type == "mkl"){
+        start = high_resolution_clock::now();
+        Ct = mklMatMul(At,Bt);
+        stop = high_resolution_clock::now();
     } else if(type == "openBlas"){
         //answer = cBlasImpl(a,b);
-        C = cBlasMatMul(A,B);
-    } else if (type == "mkl"){
-        C = mklMatMul(A,B);
+        start = high_resolution_clock::now();        
+        Ct = cBlasMatMul(At,Bt);
+        stop = high_resolution_clock::now();
     } else {
-        answer = normalMatMul(a,b);
+        start = high_resolution_clock::now();
+        answer = Pthread(a,b);
+        stop = high_resolution_clock::now();
     }
-    auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
     float time = duration.count();
     if (type == "openBlas" || type == "mkl"){
-    answer = collectResult(C);
+    answer = collectResult(Ct);
+    if (type == "openBlas"){
+        //dispVector(answer);
+        Outputtofile("pthreadtest.txt",answer);
+    }
     }
     return time;
 }

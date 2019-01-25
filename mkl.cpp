@@ -1,7 +1,7 @@
 #include "convolution.hpp"
 #include "mkl.h"
 
-
+/*
 double* mklMatMul(double* A, double* B){
   double* C;
 
@@ -12,7 +12,19 @@ double* mklMatMul(double* A, double* B){
   cblas_dgemm(CblasRowMajor,CblasNoTrans,CblasNoTrans,t,1,sqM,1,A,sqM,B,1,1,C,1);
   return C;
 }
+*/
 
+tuple<double*,int> mklMatMul(tuple<double*,int> At, tuple<double*,int> Bt){
+  double* C;
+  int sqM = get<1>(Bt);
+  int full = get<1>(At);
+  double* A = get<0>(At);
+  double* B = get<0>(Bt);
+  int t = full/sqM;
+  C = new double[t];
+  cblas_dgemm(CblasRowMajor,CblasNoTrans,CblasNoTrans,t,1,sqM,1,A,sqM,B,1,1,C,1);
+  return make_tuple(C,t);
+}
 
 vector<float> mklImpl(vector<vector<float> > temp, vector<float> ker){
   int t = temp.size();

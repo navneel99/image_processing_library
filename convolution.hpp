@@ -11,10 +11,15 @@ vector<float> cBlasImpl(vector<vector<float> > temp, vector<float> ker);
 vector<float> mklImpl(vector<vector<float> > temp, vector<float> ker);
 vector<float>  Pthread(vector<vector<float> > temp, vector<float> ker);
 vector<vector<float> > vectorToMatrix(vector<float> v, int t);
-double* createArray(vector<vector<float> >temp);
-double* createArray(vector<float> ker);
-double* cBlasMatMul(double* A, double* B);
-double* mklMatMul(double* A, double* B);
-vector<float> collectResult(double* C);
+//double* createArray(vector<vector<float> >temp);
+tuple<double*,int> createArray(vector<vector<float> >temp);
+//double* createArray(vector<float> ker);
+tuple<double*,int> createArray(vector<float> ker);
+//double* cBlasMatMul(double* A, double* B);
+tuple<double*,int> cBlasMatMul(tuple<double*,int> At, tuple<double*,int> Bt);
+//double* mklMatMul(double* A, double* B);
+tuple<double*,int> mklMatMul(tuple<double*,int> At, tuple<double*,int> Bt);
 
+//vector<float> collectResult(double* C);
+vector<float> collectResult(tuple<double*,int> Ct);
 #endif
