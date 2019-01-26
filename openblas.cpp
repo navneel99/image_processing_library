@@ -1,5 +1,7 @@
 #include "convolution.hpp"
 #include <cblas.h>
+//#include "mkl.h"
+//#include<cblas-openblas.h>
 /*
 double* createArray(vector<vector<float> >temp){
   int t = temp.size();
