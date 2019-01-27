@@ -1,6 +1,6 @@
 compiler = g++
-root = ~
-#root =/opt
+#root = ~
+root =/opt
 comm_lib_path = intel/mkl
 comm_lib = lib/intel64
 intel = -m64 -I $(root)/$(comm_lib_path)/include -L$(root)/$(comm_lib_path)/$(comm_lib) -Wl,--no-as-needed $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_scalapack_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_intel_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_gnu_thread.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_core.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_blacs_intelmpi_lp64.a -lgomp -lpthread -lm -ldl

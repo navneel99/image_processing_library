@@ -12,9 +12,9 @@ set xlabel "No. of rows"
 set ylabel "Time"
 
 
-plot "graph.dat" using 1:2 with linespoint title "Pthread",\
-     "graph.dat" using 1:3 with linespoint title "Openblas",\
-     "graph.dat" using 1:4 with linespoint title "MKL"
+plot "graph1.dat" using 1:2 with linespoint title "Pthread",\
+     "graph2.dat" using 1:3 with linespoint title "Openblas",\
+     "graph3.dat" using 1:4 with linespoint title "MKL"
      
      
 pause -1 "Hit any key to continue"
