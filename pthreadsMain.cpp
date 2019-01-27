@@ -11,7 +11,6 @@ float getPthreadTime(vector<vector<float> > a,vector<float> b){
     stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
     float time = duration.count();
-    time = time
     return time;
 }
 

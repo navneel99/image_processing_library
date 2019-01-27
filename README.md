@@ -122,5 +122,26 @@ Convolution function takes *file_path*(string) as the relative path to the txt f
 &nbsp;&nbsp;-&nbsp;**matrix** for selecting Matrix Multiplication method.<br>
 &nbsp;&nbsp;-&nbsp;**convolution** for selecting the convolution method.<br>
 
+## Plotting Functions
+To use the plotting functions, after compilation using the makefile
+<pre> plot_[pthreads | mkl | openblas].out <i>rows_of_matrix</i> <i>columns_of_matrix</i> <i>iterations</i></pre>
+**rows_of_matrix** gives the number of rows of the big matrix.
+**columns_of_matrix*** gives the number of columns of the big matrix, or equivalently the length of the kernel.
+**iterations** is a conditional that works as follows:
+
+if **iterations** is given as **0** then the output comes as the time taken for the matrix multiplication on the terminal.
+if it is non zero, then the output goes to a file [pthreads | openblas | mkl ].dat with the corresponding format:
+
+<pre> Matrix Rows   Mean_Time   Std_Deviation</pre>
+
+
+till the number of iterations provided by the user.
+
+## GNUPLOT
+After running the **make plot** command you can print the graph just by a simple command in the terminal.
+<pre>gnuplot "plot.gp"</pre> 
+  
+
+
 ### Changelog
 The file **Output.txt** saves all the programs run along with its outputs. This file saves outputs across sessions and clever use of this file will allow a user to retrieve the matrices for further processing.
