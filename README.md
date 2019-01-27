@@ -1,23 +1,36 @@
 # image_processing_library
 The first task of COP290 course, IIT Delhi. 
 
+## Installation
+### MKL
+To install the Intel Math Kernel Library in Ubuntu run the script
+<pre>./install_mkl.sh</pre>
+This script was used as it is from <a href="https://github.com/eddelbuettel/mkl4deb/blob/master/script.sh">this link</a>
+Do note that you need to set up environmental variables. 
+Information regarding that can be found <a href="https://software.intel.com/en-us/mkl-linux-developer-guide-automating-the-process-of-setting-environment-variables">here</a> 
+
+### OpenBlas
+OpenBlas installation can be done by just running this script in Ubuntu. 
+<pre> ./install_openblas.sh</pre>
+For other operating systems, please go over this <a href = "https://github.com/xianyi/OpenBLAS/wiki/Installation-Guide"> wiki</a>.
+
 ## Makefile
-## The main function
+### The main function
 The code can be compiled in different ways. If you want to run functions like Pooling, Convolutions.... etc.Use the command
 <pre> make main </pre>
 <!--To compile the code, run 
 ```sh
 make
 ```-->
-## Matrix multiplication using Pthreads
+### Matrix multiplication using Pthreads
 To compile the program for Pthreads multiplication,
 <pre> make plot_pthreads </pre>
 
-## Matrix multiplication using Intel MKL
+### Matrix multiplication using Intel MKL
 To compile the program for MKL matrix multiplication,
 <pre> make plot_mkl </pre>
 
-## Matrix multiplication using openBlas
+### Matrix multiplication using openBlas
 To compile the program for Matrix multiplication using openBlas,
 <pre> make plot_openblas </pre>
 
@@ -73,9 +86,9 @@ To call the padding function on the matrix,
 <pre>
 $ ./main.out Padding <i>file_path</i> <i> num_rows</i> <i>pad_num</i>
 </pre>
-Padding function takes *file_path*(string) as the relative path to the txt file containing a **matrix** in the **column major** order.<br>
-*num_rows*(int) is the user input of the number of rows present in the matrix given in the file.<br>
-*pad_num*(int) is the number of zeros to add on each side of the matrix. For eg. On a 4x4 matrix adding a *pad_num* of 1 will add 1 zero on each side and make the matrix (1+4+1)x(1+4+1) i.e. 6x6.<br>
+Padding function takes *file_path*(string) as the relative path to the txt file containing a **matrix** in the **column major** order.<br><br>
+*num_rows*(int) is the user input of the number of rows present in the matrix given in the file.<br><br>
+*pad_num*(int) is the number of zeros to add on each side of the matrix. For eg. On a 4x4 matrix adding a *pad_num* of 1 will add 1 zero on each side and make the matrix (1+4+1)x(1+4+1) i.e. 6x6.<br><br>
 
 ### Pooling 
 To call the pooling function,
