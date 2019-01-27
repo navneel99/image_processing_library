@@ -136,6 +136,10 @@ if it is non zero, then the output goes to a file [pthreads | openblas | mkl ].d
 
 
 till the number of iterations provided by the user.
+
+## GNUPLOT
+After running the **make plot** command you can print the graph just by a simple command in the terminal.
+<pre>gnuplot "plot.gp"</pre> 
   
 
 
