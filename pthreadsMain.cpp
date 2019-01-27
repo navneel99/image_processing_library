@@ -21,8 +21,8 @@ void OutputtofileP(int iterate, int rows, int columns){
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
-        int repeater = 400; 
-        //float stddev[repeater];  
+        int repeater = 200; 
+  
         float timeB,mean;  
         float stdDev = 0;
         for(int i = 0; i<repeater; i++){
@@ -35,14 +35,6 @@ void OutputtofileP(int iterate, int rows, int columns){
         }
         stdDev/=repeater;
         mean/=repeater;  //openBlas
-        /*
-        for(int j =0; j<repeater;j++){
-            stdDev += pow((stddev[j]-mean),2);
-        }*/
-        /*
-        for(int i  = 0;i<repeater;i++){
-            cout<<stddev[i]<<" ";
-        }*/
         stdDev-=pow(mean,2);
         stdDev=pow((stdDev/repeater),0.5);
         file1<<rows+i+1<<" "<<mean<<" "<<stdDev<<"\n";
@@ -69,7 +61,7 @@ int main(int argc, char **argv){
             mean+=timeB;
         }
         mean/=150; 
-        cout<<"pthreads' Time in microseconds: "<<mean<<endl;;
+        cout<<"pthreads' Time in seconds: "<<mean<<endl;;
     }    
     return 0; 
 

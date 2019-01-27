@@ -1,6 +1,6 @@
 #include "random.hpp"
 
-float getmklTimeM(vector<vector<float> > a,vector<float> b){
+double getmklTimeM(vector<vector<float> > a,vector<float> b){
     vector<float> answer;
     tuple<double*,int> At,Bt,Ct;
     At = createArray(a);
@@ -10,7 +10,7 @@ float getmklTimeM(vector<vector<float> > a,vector<float> b){
     Ct = mklMatMul(At,Bt);
     answer = collectResult(Ct);
     time_req = clock()-time_req;
-    float ctime = (float)time_req/CLOCKS_PER_SEC;
+    double ctime = (double)time_req/CLOCKS_PER_SEC;
     return ctime;
 }
 
@@ -20,11 +20,11 @@ void OutputtofileM(int iterate, int rows, int columns){
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
-        int repeater = 150;  
+        int repeater = 200;  
         double timeB,mean;  
         double stdDev = 0;
         for(int i = 0; i<repeater; i++){
-            timeB = (double)getmklTimeM(a,b);
+            timeB = getmklTimeM(a,b);
             mean+=timeB;
             stdDev += pow(timeB,2);
         }
@@ -58,7 +58,7 @@ int main(int argc, char **argv){
             mean+=timeB;
         }
         mean/=150; 
-        cout<<"mkl's Time in microseconds: "<<mean<<endl;;
+        cout<<"mkl's Time in seconds: "<<mean<<endl;;
     }    
     return 0; 
 

@@ -7,14 +7,9 @@ float getblasTime(vector<vector<float> > a,vector<float> b){
     Bt = createArray(b);
     clock_t time_req;
     time_req =clock();
-    //high_resolution_clock::time_point start;
-    //high_resolution_clock::time_point stop;
-    //start = high_resolution_clock::now(); 
+ 
     Ct = cBlasMatMul(At,Bt);
     
-    //stop = high_resolution_clock::now();
-    //auto duration = duration_cast<microseconds>(stop-start);
-    //float time = duration.count();
     answer = collectResult(Ct);
     time_req = clock()-time_req;
     float ctime = (float)time_req/CLOCKS_PER_SEC;
@@ -27,7 +22,7 @@ void OutputtofileB(int iterate, int rows, int columns){
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
-        int repeater = 150;  
+        int repeater = 200;  
         double timeB,mean;  
         double stdDev = 0;
         for(int i = 0; i<repeater; i++){
@@ -67,7 +62,7 @@ int main(int argc, char **argv){
             mean+=test;
         }
         mean/=150; 
-        cout<<"openBlas' Time in microseconds: "<<mean<<endl;;
+        cout<<"openBlas' Time in seconds: "<<mean<<endl;;
     }    
     return 0; 
 
