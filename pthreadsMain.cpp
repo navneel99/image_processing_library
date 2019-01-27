@@ -17,7 +17,7 @@ float getPthreadTime(vector<vector<float> > a,vector<float> b){
 
 void OutputtofileP(int iterate, int rows, int columns){
     ofstream file1;
-    file1.open("pthread.dat");
+    file1.open("pthread.dat",ios_base::app);
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
@@ -36,7 +36,7 @@ void OutputtofileP(int iterate, int rows, int columns){
         stdDev/=repeater;
         mean/=repeater;  //openBlas
         stdDev-=pow(mean,2);
-        stdDev=pow((stdDev/repeater),0.5);
+        stdDev=pow(abs(stdDev/repeater),0.5);
         file1<<rows+i+1<<" "<<mean<<" "<<stdDev<<"\n";
     }
 

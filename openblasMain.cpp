@@ -18,7 +18,7 @@ float getblasTime(vector<vector<float> > a,vector<float> b){
 
 void OutputtofileB(int iterate, int rows, int columns){
     ofstream file1;
-    file1.open("openblas.dat");
+    file1.open("openblas.dat",ios_base::app);
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
