@@ -1,5 +1,7 @@
 #include "convolution.hpp"
 #include <cblas.h>
+//#include "mkl.h"
+//#include<cblas-openblas.h>
 /*
 double* createArray(vector<vector<float> >temp){
   int t = temp.size();
@@ -71,7 +73,7 @@ tuple<double*,int> cBlasMatMul(tuple<double*,int> At, tuple<double*,int> Bt){
   int t = full/sqM;
   C = new double[t];
   cblas_dgemm(CblasRowMajor,CblasNoTrans,CblasNoTrans,t,1,sqM,1,A,sqM,B,1,1,C,1);
-  cout << "The size of C (which should be equal to rows): "<< t<<endl;
+  //cout << "The size of C (which should be equal to rows): "<< t<<endl;
   return make_tuple(C,t);
 }
 /*

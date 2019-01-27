@@ -41,7 +41,7 @@ vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> 
 
 //Performing matrix multiplication and storing the result in the vector of size n-m+1 * n-m+1
 vector<float> result ;
-if (type == "MKL"){
+if (type == "mkl"){
   result = mklImpl(temp,ker);
 } else if (type == "openBlas"){
   result = cBlasImpl(temp,ker);

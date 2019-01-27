@@ -32,4 +32,5 @@ vector<vector<float> > inputFromText(string filename, int rows);
 #include "tanh.hpp"
 #include "io.hpp"
 #include "trans.hpp"
+#include "random.hpp"
 #endif
