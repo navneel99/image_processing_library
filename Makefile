@@ -32,7 +32,7 @@ plot_pthreads: $(pthread_files)
 plot_openblas: $(openblas_files)
 	@echo "Compiling only the openBlas engine."
 	@$(compiler) -o plot_openblas.out $(openblas_files) $(openBlas) 
-	@echo "Output File is 'plot_open.out'.The graph points,once the code runs are in 'openblas.dat'"
+	@echo "Output File is 'plot_openblas.out'.The graph points,once the code runs are in 'openblas.dat'"
 
 plot_mkl: $(mkl_files)
 	@echo "Compiling only the mkl engine."
