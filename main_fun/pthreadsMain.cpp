@@ -1,4 +1,4 @@
-#include "../random.hpp"
+#include "random.hpp"
 
 
 float getPthreadTime(vector<vector<float> > a,vector<float> b){

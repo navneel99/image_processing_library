@@ -1,4 +1,4 @@
-#include "../convolution.hpp"
+#include "convolution.hpp"
 
 tuple<double*,int> createArray(vector<vector<float> >temp){
   int t = temp.size();

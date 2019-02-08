@@ -1,4 +1,4 @@
-#include "../random.hpp"
+#include "random.hpp"
 
 //This file will generate matrix of random numbers and vectors. We will then input it to the 3 variations 
 //and note the respective times in a file. We will use GNU Plot next. This file should be independently 

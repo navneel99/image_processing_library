@@ -1,5 +1,4 @@
-#include "../convolution.hpp"
-#include "../io.hpp"
+#include "convolution.hpp"
 vector<vector<float> > convm(vector<vector<float> > array, vector<vector<float> > kernel, int x, int stride,string type){
 
 //calling the padding  function   

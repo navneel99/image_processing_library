@@ -1,4 +1,4 @@
-#include "../io.hpp"
+#include "io.hpp"
 #include <time.h>
 
 void Write(int size1, string name1){

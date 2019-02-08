@@ -1,5 +1,5 @@
-#include "../io.hpp"
-#include "../trans.hpp"
+#include "io.hpp"
+#include "trans.hpp"
 
 vector<vector<float> > inputFromText(string filename,int rows, bool trans){
 

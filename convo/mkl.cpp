@@ -1,4 +1,4 @@
-#include "../convolution.hpp"
+#include "convolution.hpp"
 #include "mkl.h"
 
 /*tuple<double*,int> createArray(vector<vector<float> >temp){

@@ -1,6 +1,5 @@
-#include "../convolution.hpp"
+#include "convolution.hpp"
 #include <pthread.h>
-#include "../io.hpp"
   
 // maximum number of threads 
 #define MAX_THREAD 5

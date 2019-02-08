@@ -1,4 +1,4 @@
-#include "../io.hpp"
+#include "io.hpp"
 
 void Outputtofile(string name, vector<vector<float> > ar){
     ofstream file;

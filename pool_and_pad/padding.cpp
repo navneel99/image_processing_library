@@ -1,4 +1,4 @@
-#include "../padding.hpp"
+#include "padding.hpp"
 vector<vector<float> > Padding(vector<vector<float> > mat, int pad){
     for (int j = 0;j<mat.size();j++){
         vector<float> row = mat.at(j);

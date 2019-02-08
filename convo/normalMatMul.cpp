@@ -1,4 +1,4 @@
-#include "../convolution.hpp"
+#include "convolution.hpp"
 
 vector<float> normalMatMul(vector<vector<float> > temp, vector<float> ker){
   int t = temp.size();

@@ -1,4 +1,4 @@
-#include "../io.hpp"
+#include "io.hpp"
 
 void dispVector(vector<vector<float> > v){
     int rows = v.size();

@@ -615,3 +615,24 @@ End of the output
 10 18 26 
 End of the output
 
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+

@@ -3,7 +3,7 @@ root = ~
 #root =/opt
 comm_lib_path = intel/mkl
 comm_lib = lib/intel64
-outdir = output_files
+head_dir = headers
 
 intel = -m64 -I $(root)/$(comm_lib_path)/include -L$(root)/$(comm_lib_path)/$(comm_lib) -Wl,--no-as-needed $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_scalapack_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_intel_lp64.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_gnu_thread.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_core.a $(root)/$(comm_lib_path)/$(comm_lib)/libmkl_blacs_intelmpi_lp64.a -lgomp -lpthread -lm -ldl
 openBlas = -lpthread -lopenblas
@@ -26,7 +26,7 @@ openblas_files = $(extra_fun)/random.cpp $(convo_fun)/openblas.cpp $(main_fun)/o
 
 main: $(mainIn)
 	@echo "Compiling the 'main' function.This may take a while."
-	@$(compiler) -o main.out  $(mainIn) $(intel)
+	@$(compiler) -o main.out  -I $(head_dir)/ $(mainIn) $(intel)
 	@echo "Compilation Complete. Your output file is 'main.out'."
 
 clean: 
@@ -34,15 +34,15 @@ clean:
 
 plot_pthreads: $(pthread_files)
 	@echo "Compiling only the pThreads engine."
-	@$(compiler) -o plot_pthreads.out $(pthread_files) -lpthread 
+	@$(compiler) -o plot_pthreads.out -I $(head_dir)/ $(pthread_files) -lpthread 
 	@echo "Output File is 'plot_pthreads.out'.The graph points,once the code runs are in 'pthreads.dat'"
 
 plot_openblas: $(openblas_files)
 	@echo "Compiling only the openBlas engine."
-	@$(compiler) -o plot_openblas.out $(openblas_files) $(openBlas) 
+	@$(compiler) -o plot_openblas.out -I $(head_dir)/ $(openblas_files) $(openBlas) 
 	@echo "Output File is 'plot_openblas.out'.The graph points,once the code runs are in 'openblas.dat'"
 
 plot_mkl: $(mkl_files)
 	@echo "Compiling only the mkl engine."
-	@$(compiler) -o plot_mkl.out $(mkl_files) $(intel) 
+	@$(compiler) -o plot_mkl.out -I $(head_dir)/ $(mkl_files) $(intel) 
 	@echo "Output File is 'plot_mkl.out'.The graph points,once the code runs are in 'mkl.dat'"

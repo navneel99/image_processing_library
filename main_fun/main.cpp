@@ -1,4 +1,4 @@
-#include "../alldeps.hpp"
+#include "alldeps.hpp"
 
 int main(int argc, char **argv){
 

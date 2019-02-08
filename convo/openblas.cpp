@@ -1,4 +1,4 @@
-#include "../convolution.hpp"
+#include "convolution.hpp"
 #include <cblas.h>
 
 

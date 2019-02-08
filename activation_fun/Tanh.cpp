@@ -1,4 +1,4 @@
-#include "../tanh.hpp"
+#include "tanh.hpp"
 vector<vector<float> > Tanh(vector<vector<float> > v){
     vector<float> row;
     float ele;

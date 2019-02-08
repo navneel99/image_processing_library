@@ -1,4 +1,4 @@
-#include "../random.hpp"
+#include "random.hpp"
 
 double getmklTimeM(vector<vector<float> > a,vector<float> b){
     vector<float> answer;
