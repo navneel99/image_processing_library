@@ -14,22 +14,30 @@ vector<vector<float> > add(vector<vector<float> > a,vector<vector<float> > b){
     return a;
 }
 
-vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<float> > >filters){
+vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<vector<float> > > >filters){
+    //kernel is k * k * input_channels * filters
     int mat_depth = matrix.size();  //2
     int mat_height = matrix[0].size(); //2
     int num_filters = filters.size(); //4
-    int filter_size = filters[0].size();  //2
+    int filter_size = filters[0][0].size();  //2
     vector<vector<vector<float> > > final_answer;
     for (int j =0; j < num_filters;j++){
-        vector<vector<float> > curr_filter = filters[j];
+        vector<vector<vector<float> > >curr_filter = filters[j]; //A 3D filter k*k*input_height
         vector<vector<float> > result;
         for (int i = 0;i<mat_depth;i++){
+            if (i == 0){
+                result = Convolution(matrix[i],curr_filter[i],0,1);
+            }else{
+                result = add(Convolution(matrix[i],curr_filter[i],0,1),result);
+            }
+        }
+        /*for (int i = 0;i<mat_depth;i++){
             if (i == 0 ){
                 result = Convolution(matrix[i],curr_filter,0,1);
             } else {
                 result = add(Convolution(matrix[i],curr_filter,0,1),result);
             }
-        }
+        }*/
         final_answer.push_back(result);
     }
     return final_answer;
