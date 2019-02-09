@@ -24,6 +24,8 @@ pthread_files = $(io_fun)/*.cpp $(extra_fun)/random.cpp $(convo_fun)/Pthread.cpp
 
 openblas_files = $(extra_fun)/random.cpp $(convo_fun)/openblas.cpp $(main_fun)/openblasMain.cpp $(convo_fun)/mklblascomm.cpp $(io_fun)/*.cpp
 
+lenet_files = $(main_fun)/lenetMain.cpp $(extra_fun)/inputFromText.cpp $(extra_fun)/Trans.cpp $(io_fun)/display.cpp $(convo_fun)/3Dconv.cpp $(convo_fun)/convolution.cpp $(poolpad_fun)/padding.cpp
+
 main: $(mainIn)
 	@echo "Compiling the 'main' function.This may take a while."
 	@$(compiler) -o main.out  -I $(head_dir)/ $(mainIn) $(intel)
@@ -46,3 +48,8 @@ plot_mkl: $(mkl_files)
 	@echo "Compiling only the mkl engine."
 	@$(compiler) -o plot_mkl.out -I $(head_dir)/ $(mkl_files) $(intel) 
 	@echo "Output File is 'plot_mkl.out'.The graph points,once the code runs are in 'mkl.dat'"
+
+lenet: $(lenet_files)
+	@echo "LeNet Compile."
+	@$(compiler) -o lenet.out -I $(head_dir)/ $(lenet_files)
+	@echo "Done."

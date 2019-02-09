@@ -2,7 +2,7 @@
 #define convolution_h
 #include "common.hpp"
 #include "padding.hpp"
-vector<vector<float> > Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int x, int stride);
+vector<vector<float> > Convolution(vector<vector<float>>arr, vector<vector<float>>kernel, int pad, int stride);
 vector<vector<float> > convm(vector<vector<float>> arr, vector<vector<float>> kernel, int x, int stride,string type);
 void* matMulFun(void* arg);
 void* multi(void* arg);
@@ -22,4 +22,7 @@ tuple<double*,int> mklMatMul(tuple<double*,int> At, tuple<double*,int> Bt);
 
 //vector<float> collectResult(double* C);
 vector<float> collectResult(tuple<double*,int> Ct);
+
+vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<float> > >filters);
+
 #endif
