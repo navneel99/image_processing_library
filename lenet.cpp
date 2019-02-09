@@ -1,6 +1,27 @@
 #include "pooling.hpp"
 #include "common.hpp"
+#include "convolution.hpp"
+#include "io.hpp"
 
-void LenetArch(string input, string kernel){
+void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string ker_l4){
+    vector<vector<float> > img = inputFromText(image,28,true); //check the transpose part
+    tuple<vector<vector<vector<vector<float> > > >,vector<float> > ker_lay_1 = inputFromText3D(ker_l1,5,1,20);
+    tuple<vector<vector<vector<vector<float> > > >,vector<float> > ker_lay_2 = inputFromText3D(ker_l2,5,20,50);
+    tuple<vector<vector<vector<vector<float> > > >,vector<float> > ker_lay_3 = inputFromText3D(ker_l3,4,50,500);
+    tuple<vector<vector<vector<vector<float> > > >,vector<float> > ker_lay_4 = inputFromText3D(ker_l4,1,500,10);
+
+    vector<vector<vector<vector<float> > > > weights_lay_1 = get<0>(ker_lay_1);
+    vector<vector<vector<vector<float> > > > weights_lay_2 = get<0>(ker_lay_2);
+    vector<vector<vector<vector<float> > > > weights_lay_3 = get<0>(ker_lay_3);
+    vector<vector<vector<vector<float> > > > weights_lay_4 = get<0>(ker_lay_4);
+
+    vector<float> bias_lay_1 = get<1>(ker_lay_1);
+    vector<float> bias_lay_2 = get<1>(ker_lay_2);
+    vector<float> bias_lay_3 = get<1>(ker_lay_3);
+    vector<float> bias_lay_4 = get<1>(ker_lay_4);
+
+    //Conv_Layer_1
+
+
 	
 }

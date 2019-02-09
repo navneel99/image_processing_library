@@ -1,5 +1,5 @@
 #include "convolution.hpp"
-//This function takes a 3D matrix of shape l*l*d and a filter 3D matrix of shape k*k*f where f is the number of fitrs to be used to convolve.
+//This function takes a 3D matrix of shape l*l*d and a filter 3D matrix of shape k*k*d*f where f is the number of fitrs to be used to convolve.
 //
 
 vector<vector<float> > add(vector<vector<float> > a,vector<vector<float> > b){
