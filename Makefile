@@ -1,6 +1,6 @@
 compiler = g++
-root = ~
-#root =/opt
+#root = ~
+root =/opt
 comm_lib_path = intel/mkl
 comm_lib = lib/intel64
 head_dir = headers
