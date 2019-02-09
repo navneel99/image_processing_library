@@ -368,3 +368,271 @@ End of the output
 0 0 0 0 0 0 0 0 
 End of the output
 
+./main.out Relu exampleMat.txt 4 
+
+1 5 9 13 
+2 6 10 14 
+3 7 11 15 
+4 8 12 16 
+End of the output
+
+./main.out Relu exampleMat.txt 4 
+
+1 5 0 13 
+2 6 10 14 
+3 7 11 15 
+4 8 12 16 
+End of the output
+
+./main.out Relu exampleMat.txt 4 
+
+1 5 9 13 
+2 6 10 14 
+3 7 11 15 
+4 8 12 16 
+End of the output
+
+./main.out Sigmoid exampleMat.txt 4 
+
+Arguments have not been correctly entered.
+End of the output
+
+./main.out Sigmoid exampleMat.txt 
+
+0.731059 
+0.880797 
+0.952574 
+0.982014 
+0.993307 
+0.997527 
+0.999089 
+0.999665 
+0.999877 
+0.999955 
+0.999983 
+0.999994 
+0.999998 
+0.999999 
+1 
+1 
+End of the output
+
+./main.out Softmax exampleMat.txt 
+
+1.93367e-07 
+5.25626e-07 
+1.4288e-06 
+3.88388e-06 
+1.05575e-05 
+2.86982e-05 
+7.80099e-05 
+0.000212053 
+0.000576419 
+0.00156687 
+0.0042592 
+0.0115777 
+0.0314714 
+0.0855482 
+0.232544 
+0.632121 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Convolution 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix mkl 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openblas 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 same 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 5 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix opeBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix mkl 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix pthreads 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix openBlas 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+
+./main.out Convolution exampleMat.txt 4 kernel.txt 2 valid 1 Matrix 
+
+6 14 22 
+8 16 24 
+10 18 26 
+End of the output
+

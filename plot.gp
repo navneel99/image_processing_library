@@ -12,12 +12,12 @@ set xlabel "No. of rows"
 set ylabel "Time(in microseconds)"
 
 
-plot "pthread.dat" using 1:2:3 with linespoint title "Pthread",\
-     "openblas.dat" using 1:2:3 with linespoint title "Openblas",\
-     "mkl.dat" using 1:2:3 with linespoint title "MKL",\
-     "pthread.dat" using 1:2:3 with yerrorbars notitle,\
-     "openblas.dat" using 1:2:3 with yerrorbars notitle,\
-     "mkl.dat" using 1:2:3 with yerrorbars notitle 
+plot "dat_files/pthread.dat" using 1:2:3 with linespoint title "Pthread",\
+     "dat_files/openblas.dat" using 1:2:3 with linespoint title "Openblas",\
+     "dat_files/mkl.dat" using 1:2:3 with linespoint title "MKL",\
+     "dat_files/pthread.dat" using 1:2:3 with yerrorbars notitle,\
+     "dat_files/openblas.dat" using 1:2:3 with yerrorbars notitle,\
+     "dat_files/mkl.dat" using 1:2:3 with yerrorbars notitle 
      
      
 pause -1 "Hit any key to continue"
