@@ -14,7 +14,6 @@ convo_fun = convo
 poolpad_fun = pool_and_pad
 main_fun = main_fun
 extra_fun = extra
-#mainIn = convolution.cpp main.cpp matMul.cpp mkl.cpp openblas.cpp padding.cpp pooling.cpp Pthread.cpp  Trans.cpp normalMatMul.cpp mklblascomm.cpp $(ac_fun)/*.cpp $(io_fun)/*.cpp
 
 mainIn = $(main_fun)/main.cpp  $(poolpad_fun)/*.cpp  $(extra_fun)/Trans.cpp  $(ac_fun)/*.cpp $(io_fun)/*.cpp $(convo_fun)/*.cpp $(extra_fun)/inputFromText.cpp
 
