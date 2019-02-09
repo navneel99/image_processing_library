@@ -25,6 +25,7 @@ void OutputtofileM(int iterate, int rows, int columns){
         double stdDev = 0;
         for(int i = 0; i<repeater; i++){
             timeB = getmklTimeM(a,b);
+            timeB *= 1000000;
             mean+=timeB;
             stdDev += pow(timeB,2);
         }
@@ -55,10 +56,11 @@ int main(int argc, char **argv){
 
         for(int i = 0; i<150; i++){
             timeB = getmklTimeM(a,b);
+            timeB *= 1000000;
             mean+=timeB;
         }
         mean/=150; 
-        cout<<"mkl's Time in seconds: "<<mean<<endl;;
+        cout<<"mkl's Time in microseconds: "<<mean<<endl;;
     }    
     return 0; 
 

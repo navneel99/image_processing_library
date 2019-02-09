@@ -27,6 +27,7 @@ void OutputtofileB(int iterate, int rows, int columns){
         double stdDev = 0;
         for(int i = 0; i<repeater; i++){
             timeB = (double)getblasTime(a,b);
+            timeB = timeB * (1000000);
             mean+=timeB;
             stdDev += pow(timeB,2);
         }
@@ -59,10 +60,11 @@ int main(int argc, char **argv){
         for(int i = 0; i<150; i++){
             timeB = getblasTime(a,b);
             double test = (double)timeB;
+            test *= 1000000;
             mean+=test;
         }
         mean/=150; 
-        cout<<"openBlas' Time in seconds: "<<mean<<endl;;
+        cout<<"openBlas' Time in microseconds: "<<mean<<endl;;
     }    
     return 0; 
 
