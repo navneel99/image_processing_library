@@ -28,5 +28,6 @@ vector<vector<vector<float> > >Relu (vector<vector<vector<float> > > v){
             }
         }
     }
+    return v;
 } 
 

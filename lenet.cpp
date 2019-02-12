@@ -2,6 +2,8 @@
 #include "common.hpp"
 #include "convolution.hpp"
 #include "io.hpp"
+#include "relu.hpp"
+#include "softmax.hpp"
 
 void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string ker_l4){
     vector<vector<float> > img = inputFromText(image,28,true); //check the transpose part
@@ -29,7 +31,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
     for(int d=0; d<ans_layer_1.size(); d++){
        for(int i=0; i<ans_layer_1[0].size(); i++){
            for(int j=0; j<ans_layer_1[0][0].size(); j++){
-               ans_layer_1[1][i][j] = ans_layer_1[1][i][j] + bias_lay_1[d];
+               ans_layer_1[d][i][j] = ans_layer_1[d][i][j] + bias_lay_1[d];
             }
         }
     }
@@ -51,7 +53,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
       for(int d=0; d<ans_layer_3.size(); d++){
        for(int i=0; i<ans_layer_3[0].size(); i++){
            for(int j=0; j<ans_layer_3[0][0].size(); j++){
-               ans_layer_3[1][i][j] = ans_layer_3[1][i][j] + bias_lay_1[d];
+               ans_layer_3[d][i][j] = ans_layer_3[d][i][j] + bias_lay_2[d];
             }
         }
     }
@@ -67,6 +69,39 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
     // dispVector(ans_layer_4);
     // cout<<endl;
 	
-    //Fully Connected Layer
-    
+    //Fully Connected Layer_5
+    vector<vector<vector<float> > > ans_layer_5 = convolution3D(ans_layer_4,weights_lay_3);
+    //cout<<bias_lay_3.size()<<" "<<ans_layer_5.size();
+     for(int d=0; d<ans_layer_5.size(); d++){
+       for(int i=0; i<ans_layer_5[0].size(); i++){
+           for(int j=0; j<ans_layer_5[0][0].size(); j++){
+               ans_layer_5[d][i][j] = ans_layer_5[d][i][j] + bias_lay_3[d];
+            }
+        }
+    }
+
+     ans_layer_5 = Relu(ans_layer_5);
+     cout<<ans_layer_5.size()<<" "<<ans_layer_5[0].size()<<" "<<ans_layer_5[0][0].size();
+    cout<<endl;
+
+    //Fully Connected Layer_6
+    vector<vector<vector<float> > > ans_layer_6 = convolution3D(ans_layer_5,weights_lay_4);
+     for(int d=0; d<ans_layer_6.size(); d++){
+       for(int i=0; i<ans_layer_6[0].size(); i++){
+           for(int j=0; j<ans_layer_6[0][0].size(); j++){
+               ans_layer_6[1][i][j] = ans_layer_6[1][i][j] + bias_lay_3[d];
+            }
+        }
+    }
+
+    cout<<ans_layer_6.size()<<" "<<ans_layer_6[0].size()<<" "<<ans_layer_6[0][0].size();
+    cout<<endl;
+
+    vector<float> finalans(10);
+    for(int i=0; i<finalans.size(); i++){
+        finalans[i] = ans_layer_6[i][0][0];
+    }
+    dispVector(finalans);
+    finalans = Softmax(finalans);
+    //dispVector(finalans);
 }
