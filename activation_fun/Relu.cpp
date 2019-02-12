@@ -13,5 +13,20 @@ vector<vector<float> > Relu(vector<vector<float> > v){
         v[it] = row;
     }
     return v;
+}
+vector<vector<vector<float> > >Relu (vector<vector<vector<float> > > v){
+    int row = v.size();
+    int col = v[0].size();
+    int dep = v[0][0].size();
+    for (int i = 0; i < row;i++){
+        for(int j = 0; j<col;j++){
+            for(int k = 0; k< dep; k++){
+                float ele = v[i][j][k];
+                if (ele < 0){
+                    v[i][j][k] = 0;
+                }
+            }
+        }
+    }
 } 
 
