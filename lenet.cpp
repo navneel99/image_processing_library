@@ -22,7 +22,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
     vector<float> bias_lay_4 = get<1>(ker_lay_4);
 
     //Conv_Layer_1
-    cout<<weights_lay_1.size()<<" "<<weights_lay_1[0].size()<<" "<<weights_lay_1[0][0].size()<<" "<<weights_lay_1[0][0][0].size()<<endl;
+    //cout<<weights_lay_1.size()<<" "<<weights_lay_1[0].size()<<" "<<weights_lay_1[0][0].size()<<" "<<weights_lay_1[0][0][0].size()<<endl;
     vector<vector<vector<float> > > image_vector(1,vector<vector<float> >(28) );
     image_vector[0] = img;
     vector<vector<vector<float> > > ans_layer_1 = convolution3D(image_vector, weights_lay_1);
@@ -47,22 +47,26 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
 
     //Conv_Layer_3
     cout<<weights_lay_2.size()<<" "<<weights_lay_2[0].size()<<" "<<weights_lay_2[0][0].size()<<" "<<weights_lay_2[0][0][0].size()<<endl;
-    vector<vector<vector<float> > > ans_layer_3 = convolution3D(ans_layer_3, weights_lay_2);
-   /*   for(int d=0; d<ans_layer_3.size(); d++){
+    vector<vector<vector<float> > > ans_layer_3 = convolution3D(ans_layer_2, weights_lay_2);
+      for(int d=0; d<ans_layer_3.size(); d++){
        for(int i=0; i<ans_layer_3[0].size(); i++){
            for(int j=0; j<ans_layer_3[0][0].size(); j++){
                ans_layer_3[1][i][j] = ans_layer_3[1][i][j] + bias_lay_1[d];
             }
         }
     }
-    cout<<ans_layer_1.size()<<" "<<ans_layer_1[0].size()<<" "<<ans_layer_1[0][0].size();
+    cout<<ans_layer_3.size()<<" "<<ans_layer_3[0].size()<<" "<<ans_layer_3[0][0].size();
     cout<<endl;
     // dispVector(ans_layer_3);
     // cout<<endl<<endl;
 
     //Pool_layer_4
     vector<vector<vector<float> > > ans_layer_4 = Pool3D(ans_layer_3, 2, 0, "max");
+    cout<<ans_layer_4.size()<<" "<<ans_layer_4[0].size()<<" "<<ans_layer_4[0][0].size();
+    cout<<endl;
     // dispVector(ans_layer_4);
     // cout<<endl;
-	*/
+	
+    //Fully Connected Layer
+    
 }
