@@ -77,7 +77,11 @@ tuple< vector<vector<vector<vector<float> > > >,vector<float> > inputFromText3D(
             row.push_back(ele);
         }
     }
+
+    //closing the files
     file.close();
+
+    //returning the result
     return make_tuple(final_result,row);
 
 }

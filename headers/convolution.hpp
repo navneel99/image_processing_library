@@ -23,6 +23,7 @@ tuple<double*,int> mklMatMul(tuple<double*,int> At, tuple<double*,int> Bt);
 //vector<float> collectResult(double* C);
 vector<float> collectResult(tuple<double*,int> Ct);
 
-vector<vector<vector<vector<float> > > > convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<float> > >filters);
+//vector<vector<vector<vector<float> > > > convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<vector<float> > > >filters);
+vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > matrix, vector<vector<vector<vector<float> > > >filters);
 
 #endif

@@ -1,6 +1,6 @@
 compiler = g++
-root = ~
-#root =/opt
+#root = ~
+root =/opt
 comm_lib_path = intel/mkl
 comm_lib = lib/intel64
 head_dir = headers
@@ -23,7 +23,7 @@ pthread_files = $(io_fun)/*.cpp $(extra_fun)/random.cpp $(convo_fun)/Pthread.cpp
 
 openblas_files = $(extra_fun)/random.cpp $(convo_fun)/openblas.cpp $(main_fun)/openblasMain.cpp $(convo_fun)/mklblascomm.cpp $(io_fun)/*.cpp
 
-lenet_files = $(main_fun)/lenetMain.cpp $(extra_fun)/inputFromText.cpp $(extra_fun)/Trans.cpp $(io_fun)/display.cpp $(convo_fun)/3Dconv.cpp $(convo_fun)/convolution.cpp $(poolpad_fun)/*.cpp
+lenet_files = $(main_fun)/lenetMain.cpp $(extra_fun)/inputFromText.cpp $(extra_fun)/Trans.cpp $(io_fun)/display.cpp $(convo_fun)/3Dconv.cpp $(convo_fun)/convolution.cpp $(poolpad_fun)/*.cpp lenet.cpp
 
 main: $(mainIn)
 	@echo "Compiling the 'main' function.This may take a while."
