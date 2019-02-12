@@ -22,6 +22,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
 
     //Conv_Layer_1
     vector<vector<vector<float> > > image_vector(1,vector<vector<float> >(28) );
+    image_vector[0] = img;
     vector<vector<vector<float> > > ans_layer_1 = convolution3D(image_vector, weights_lay_1);
     for(int d=0; d<ans_layer_1.size(); d++){
        for(int i=0; i<ans_layer_1[0].size(); i++){
