@@ -1,4 +1,5 @@
 #include "convolution.hpp"
+#include "io.hpp"
 //This function takes a 3D matrix of shape l*l*d and a filter 3D matrix of shape k*k*d*f where f is the number of fitrs to be used to convolve.
 //
 
@@ -20,6 +21,7 @@ vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > 
     int mat_height = matrix[0].size(); //2
     int num_filters = filters.size(); //4
     int filter_size = filters[0][0].size();  //2
+    //cout<<filters[0][0][0].size()<<endl;
 
     vector<vector<vector<float> > > final_answer;
     
