@@ -41,7 +41,7 @@ void Outputtofile(string name, vector<vector<vector<float> > >ar){
     file.open(name,std::ios_base::app);
 
     for(int i=0; i<ar.size(); i++){
-        file<<"---------------------\n"<<"Depth = "<<i;
+        file<<"---------------------\n"<<"Depth = "<<i<<endl;
         for(int j=0; j<ar[0].size(); j++){
             for(int k=0;k<ar[0][0].size();k++){
                 file<<ar[i][j][k]<<" ";

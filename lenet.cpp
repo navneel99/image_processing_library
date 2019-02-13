@@ -77,7 +77,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
 	
     //Fully Connected Layer_5
     cout<<weights_lay_3.size()<<" "<<weights_lay_3[0].size()<<" "<<weights_lay_3[0][0].size()<<" "<<weights_lay_3[0][0][0].size()<<endl;
-    vector<vector<vector<float> > > ans_layer_5 = convolution3D(ans_layer_4,weights_lay_3);
+    vector<vector<vector<float> > > ans_layer_5 = FullyConnected3D(ans_layer_4,weights_lay_3);
     Outputtofile("fctemp.txt",ans_layer_5);
     //cout<<bias_lay_3.size()<<" "<<ans_layer_5.size();
      for(int d=0; d<ans_layer_5.size(); d++){
@@ -99,10 +99,11 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
      for(int d=0; d<ans_layer_6.size(); d++){
        for(int i=0; i<ans_layer_6[0].size(); i++){
            for(int j=0; j<ans_layer_6[0][0].size(); j++){
-               ans_layer_6[1][i][j] = ans_layer_6[1][i][j] + bias_lay_3[d];
+               ans_layer_6[1][i][j] = ans_layer_6[1][i][j] + bias_lay_4[d];
             }
         }
     }
+
     Outputtofile("output__fc2.txt",ans_layer_6);    
     // cout<<ans_layer_6.size()<<" "<<ans_layer_6[0].size()<<" "<<ans_layer_6[0][0].size();
     // cout<<endl;
@@ -110,9 +111,10 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
     vector<float> finalans(10);
     for(int i=0; i<finalans.size(); i++){
         finalans[i] = ans_layer_6[i][0][0];
+        //cout<<finalans[i]<<" ";
     }
     //dispVector(finalans);
     finalans = Softmax(finalans);
     Outputtofile("output__softmax.txt",finalans);
-    //dispVector(finalans);
+    dispVector(finalans);
 }

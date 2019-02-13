@@ -1,5 +1,5 @@
 import cv2
-img = cv2.imread('1.png',0)
+img = cv2.imread('2.png',0)
 if img.shape != [28,28]:
     img2 = cv2.resize(img,(28,28))
     img = img2.reshape(28,28,-1);
