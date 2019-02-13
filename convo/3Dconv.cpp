@@ -20,7 +20,9 @@ vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > 
     int mat_height = matrix[0].size(); //2
     int num_filters = filters.size(); //4
     int filter_size = filters[0][0].size();  //2
+
     vector<vector<vector<float> > > final_answer;
+    
     for (int j =0; j < num_filters;j++){
         vector<vector<vector<float> > >curr_filter = filters[j]; //A 3D filter k*k*input_height
         vector<vector<float> > result;
