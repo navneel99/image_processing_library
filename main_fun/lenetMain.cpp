@@ -11,7 +11,6 @@ int main(int argc, char **argv){
     string ch3 = argv[3];
     string ch4 = argv[4];
     string ch5 = argv[5];
-    cout<< ch1<<ch2<<ch3<<ch4<<ch5;
     //tuple < vector<vector<vector<vector<float> > > >, vector<float> > A = inputFromText3D(ch1, 5,1,20);
     /*vector<vector<vector<float> > > ker1  { { {1,1},{1,1} },{ {1,1},{1,1} },{ {1,1},{1,1} },{ {1,1},{1,1} } };
     vector<vector<vector<float> > >test1  { { {1,0,1,0},{1,0,1,0},{1,0,1,0},{1,0,1,0} },{ {1,0,1,0},{1,0,1,0},{1,0,1,0},{1,0,1,0} },{{1,0,1,0},{1,0,1,0},{1,0,1,0},{1,0,1,0} },{{1,0,1,0},{1,0,1,0},{1,0,1,0},{1,0,1,0} } };
