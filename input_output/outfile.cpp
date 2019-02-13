@@ -36,3 +36,18 @@ void Outputtofile(string name, vector<float> ar){
     }
     file.close();
 }
+void Outputtofile(string name, vector<vector<vector<float> > >ar){
+    ofstream file;
+    file.open(name,std::ios_base::app);
+
+    for(int i=0; i<ar.size(); i++){
+        file<<"---------------------\n"<<"Depth = "<<i;
+        for(int j=0; j<ar[0].size(); j++){
+            for(int k=0;k<ar[0][0].size();k++){
+                file<<ar[i][j][k]<<" ";
+            }
+        file<<"\n";            
+        }
+    }
+    file.close();
+}
