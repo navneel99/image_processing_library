@@ -1,6 +1,6 @@
 compiler = g++
-#root = ~
-root =/opt
+root = ~
+#root =/opt
 comm_lib_path = intel/mkl
 comm_lib = lib/intel64
 head_dir = headers
@@ -31,7 +31,10 @@ main: $(mainIn)
 	@echo "Compilation Complete. Your output file is 'main.out'."
 
 clean: 
-	rm *.out *.exe
+	@[ ! -f *.out ] || rm *.out
+	@truncate -s 0 dat_files/*.dat
+	@[ ! -f *.eps ] || rm *.eps
+	@echo "Removed .out files, .eps files and emptied the .dat files"
 
 plot_pthreads: $(pthread_files)
 	@echo "Compiling only the pThreads engine."

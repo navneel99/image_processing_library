@@ -22,14 +22,23 @@ void OutputtofileB(int iterate, int rows, int columns){
     for(int i=0; i<iterate; i++){
         vector<vector<float> > a = randMatrix(rows+i+1,columns);
         vector<float> b = randVector(columns);
-        int repeater = 200;  
+        int repeater = 20;
+        int min_finder = 10;  
         double timeB,mean;  
         double stdDev = 0;
+        double curr_min;
         for(int i = 0; i<repeater; i++){
+            for (int k = 0;k<min_finder;k++){
             timeB = (double)getblasTime(a,b);
             timeB = timeB * (1000000);
-            mean+=timeB;
-            stdDev += pow(timeB,2);
+            if (k == 0){
+                curr_min = timeB;
+            } else if (timeB < curr_min){
+                curr_min = timeB;
+            }
+            }
+            mean+=curr_min;
+            stdDev += pow(curr_min,2);
         }
         stdDev/=repeater;
         mean/=repeater;  //openBlas
