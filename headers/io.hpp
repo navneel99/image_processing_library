@@ -13,7 +13,6 @@ void dispVector(vector<vector<float> > v);
 void dispVector(vector<float>  v);
 void Write(int size1, string name1);
 void Outputtofile(int iterate, int rows, int columns);
-// vector<vector<vector<float> > > inputFromText3D(string filename,int rows,int depth, int bias);
 tuple< vector<vector<vector<vector<float> > > >,vector<float> > inputFromText3D(string filename,int rows,int depth,int filters);
 
 #endif

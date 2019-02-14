@@ -49,6 +49,6 @@ plot_mkl: $(mkl_files)
 	@echo "Output File is 'plot_mkl.out'.The graph points,once the code runs are in 'mkl.dat'"
 
 lenet: $(lenet_files)
-	@echo "LeNet Compile."
+	@echo "Compiling the LeNet Architecture."
 	@$(compiler) -o lenet.out -I $(head_dir)/ $(lenet_files)
-	@echo "Done."
+	@echo "Compilation complete. The output file is 'lenet.out'."

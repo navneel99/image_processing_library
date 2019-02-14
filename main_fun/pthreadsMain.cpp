@@ -26,9 +26,6 @@ void OutputtofileP(int iterate, int rows, int columns){
         float stdDev = 0;
         for(int i = 0; i<repeater; i++){
             timeB = getPthreadTime(a,b);
-            if (timeB<0){
-                cout<<"NegTime!"<<endl;
-            }
             mean+=timeB;
             stdDev += pow(timeB,2);
         }

@@ -20,14 +20,6 @@ vector<vector<vector<float> > > Pool3D(vector<vector<vector<float> > > input, in
 
 		vector<vector<float> > tempans = Pooling(tempinput, kersize, pad, whichone);
 		output[i] = tempans;
-		//for checking the output
-		/*for(int ii=0; ii< tempans.size(); ii++){
-			for(int jj=0; jj< tempans[0].size(); jj++){
-				cout<<tempans[ii][jj]<<" ";
-			}
-			cout<<endl;
-		   }
-		cout<<endl<<endl<<endl<<endl;*/
   }
  	return output;
 }

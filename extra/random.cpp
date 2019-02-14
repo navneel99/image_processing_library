@@ -17,9 +17,7 @@ vector<vector<float> > randMatrix(int rows,int columns){
 vector<float> randVector(int rows){
     vector<float> result;
     for ( int i = 0; i<rows;i++){
-        //cout<<"Tets";
         result.push_back((rand()%200)-100);
     }
-    //dispVector(result);
     return result;
 }

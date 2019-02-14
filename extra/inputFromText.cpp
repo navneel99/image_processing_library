@@ -10,12 +10,6 @@ vector<vector<float> > inputFromText(string filename,int rows, bool trans){
     int c = 0;
     vector<float> row;
     while (getline(file,line,'\n')){
-        /*
-        stringstream ssline(line);
-        while (ssline >> ele){
-            c++;
-            row.push_back((ele));
-        }*/
         c++;
         ele = stof(line); 
         row.push_back(ele);

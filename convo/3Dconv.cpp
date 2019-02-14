@@ -21,7 +21,6 @@ vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > 
     int mat_height = matrix[0].size(); //2
     int num_filters = filters.size(); //4
     int filter_size = filters[0][0].size();  //2
-    //cout<<filters[0][0][0].size()<<endl;
 
     vector<vector<vector<float> > > final_answer;
     
@@ -35,13 +34,7 @@ vector<vector<vector<float> > >  convolution3D(vector<vector<vector <float> > > 
                 result = add(Convolution(matrix[i],curr_filter[i],0,1),result);
             }
         }
-        /*for (int i = 0;i<mat_depth;i++){
-            if (i == 0 ){
-                result = Convolution(matrix[i],curr_filter,0,1);
-            } else {
-                result = add(Convolution(matrix[i],curr_filter,0,1),result);
-            }
-        }*/
+        
         final_answer.push_back(result);
     }
     return final_answer;
@@ -57,7 +50,6 @@ vector<vector<vector<float> > >  FullyConnected3D(vector<vector<vector <float> >
     int num_filters = filters.size(); //4
     //Size of the filters
     int filter_size = filters[0][0].size();  //2
-    //cout<<filters[0][0][0].size()<<endl;
     
     //since we have to perform an operation (fully connected) and for this the dimesion of kernel is same as the dimesion of input matrix
 
@@ -73,7 +65,6 @@ vector<vector<vector<float> > >  FullyConnected3D(vector<vector<vector <float> >
                 result = add(Convolution(matrix[i],curr_filter[i],0,1),result);
             }
         }
-        //dispVector(result);
         final_answer.push_back(result);
     }
     return final_answer;
