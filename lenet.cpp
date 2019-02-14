@@ -69,7 +69,7 @@ void LenetArch(string image, string ker_l1, string ker_l2, string ker_l3, string
         }
     }
 
-     ans_layer_5 = Relu(ans_layer_5);
+    ans_layer_5 = Relu(ans_layer_5);
     Outputtofile(output_folder+"output__fc1.txt",ans_layer_5);
 
     //Fully Connected Layer_6
