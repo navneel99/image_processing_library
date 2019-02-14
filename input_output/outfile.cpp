@@ -27,9 +27,13 @@ void Outputtofile(string name, string message){
     file <<message<<'\n';
     file.close();
 }
-void Outputtofile(string name, vector<float> ar){
+void Outputtofile(string name, vector<float> ar,bool append){
     ofstream file;
+    if (append == true){
     file.open(name,std::ios_base::app);
+    } else{
+    file.open(name);
+    }
     for(int i=0; i<ar.size(); i++){
         file<<ar[i]<<" ";
         file<<"\n";
@@ -38,7 +42,7 @@ void Outputtofile(string name, vector<float> ar){
 }
 void Outputtofile(string name, vector<vector<vector<float> > >ar){
     ofstream file;
-    file.open(name,std::ios_base::app);
+    file.open(name);
 
     for(int i=0; i<ar.size(); i++){
         file<<"---------------------\n"<<"Depth = "<<i<<endl;
