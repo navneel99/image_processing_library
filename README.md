@@ -14,7 +14,16 @@ OpenBlas installation can be done by just running this script in Ubuntu.
 <pre> ./install_openblas.sh</pre>
 For other operating systems, please go over this <a href = "https://github.com/xianyi/OpenBLAS/wiki/Installation-Guide"> wiki</a>.
 
+## Running the program
+
+Run the script 
+<pre> ./automate.sh</pre>
+Choose out of the 4 options. Either Choose the number or the option name and follow along the instructions given.
+
+For detailed execution refer the details given below.
+
 ## Makefile
+
 ### The main function
 The code can be compiled in different ways. If you want to run functions like Pooling, Convolutions.... etc.Use the command
 <pre> make main </pre>
@@ -34,7 +43,12 @@ To compile the program for MKL matrix multiplication,
 To compile the program for Matrix multiplication using openBlas,
 <pre> make plot_openblas </pre>
 
-And to remove all the .out files, run
+### LeNet Architecture
+To compile the LeNet Architecture with the trained weights
+<pre> make lenet </pre>
+
+### Removing files
+And to remove all the .out files, .eps files and empty the .dat files, run
 ```sh
 make clean
 ```
@@ -142,6 +156,6 @@ After running the **make plot** command you can print the graph just by a simple
 <pre>gnuplot "plot.gp"</pre> 
   
 
-
+<!--
 ### Changelog
-The file **Output.txt** saves all the programs run along with its outputs. This file saves outputs across sessions and clever use of this file will allow a user to retrieve the matrices for further processing.
+The file **Output.txt** saves all the programs run along with its outputs. This file saves outputs across sessions and clever use of this file will allow a user to retrieve the matrices for further processing. -->
