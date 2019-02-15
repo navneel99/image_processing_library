@@ -14,7 +14,7 @@ while true; do
         make plot_pthreads
         echo "Do you want to automatically generate and plot the data(y/n)?"
         read ans
-        if (( "$ans"  == "n")); then
+        if [[ "$ans"  == "n" ]]; then
             echo "Exiting..."
             break
         else
@@ -35,7 +35,7 @@ while true; do
             gnuplot plot.gp
             echo "Output in \"graph_plots\"."
         fi
-        echo "\n\n"
+        echo -e "\n\n"
     elif [[ "$option" == "3" || "$option" == "LeNet" ]]; then
         echo -e "You have entered the LeNet Architecture.\n\n Make sure you have a png file on the same directory level as this script.\n For testing purposes we already have '1.png' and '2.png'."
         echo "Enter your png file name(with the extension ''.png')"
@@ -54,4 +54,4 @@ while true; do
     else 
         echo -e "Wrong Input Given. Just write the Number or the Option Name. Do note that it is Case Sensitive\n\n"
     fi
-done 
+done
