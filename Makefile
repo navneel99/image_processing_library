@@ -33,7 +33,7 @@ main: $(mainIn)
 clean: 
 	@[ ! -f *.out ] || rm *.out
 	@truncate -s 0 dat_files/*.dat
-	@[ ! -f *.eps ] || rm *.eps
+	@[ ! -f graph_plots/*.eps ] || rm graph_plots/*.eps
 	@echo "Removed .out files, .eps files and emptied the .dat files"
 
 plot_pthreads: $(pthread_files)

@@ -1,7 +1,5 @@
-import sys
-
 import cv2
-
+import sys
 image_file = sys.argv[1]
 img = cv2.imread(image_file, 0)
 if img.shape != [28, 28]:
