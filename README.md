@@ -163,7 +163,7 @@ Formula to for normalisation is 1-(Pixel Value)/255.<br>
 <br>
 MNIST Input image: 28x28 pixels, grayscale so number of channels 1
 
-### Layer 1: Convolution 
+### Layer 1: Convolution
 Input dimension N: 28x28<br>
 Input channels: 1<br>
 Output channels(Number of filters): 20<br>
@@ -171,7 +171,7 @@ Kernel K = 5, so each filter is a 5x5 square<br>
 Stride 1, padding 0, so output dimension (N-K+1) = 28-5+1 = 24<br>
 
 ### Layer 2: Pooling
-Since we are doing max pooling hence no need of wweights.<br>
+Since we are doing max pooling hence no need of weights.<br>
 Input dimension N: 24x24<br>
 Input channels: 20<br>
 Pooling with kernel: K = 2, stride 2, so output is 12x12<br>
@@ -186,9 +186,9 @@ Stride 1, padding 0, so output dimension (N-K+1) = 12-5+1 = 8<br>
 
 ### Layer 4: Pooling
 Since we are doing max pooling henc no need of weights.<br>
-Input dimension: N = 8x8
-Input channels: 50
-Pooling with kernel: K = 2, stride 2, so output is 4x4
+Input dimension: N = 8x8<br>
+Input channels: 50<br>
+Pooling with kernel: K = 2, stride 2, so output is 4x4<br>
 Output channel: 50.<br>
 
 ### Layer 5: Fully Connected
