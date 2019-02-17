@@ -154,8 +154,59 @@ till the number of iterations provided by the user.
 ## GNUPLOT
 After running the **make plot** command you can print the graph just by a simple command in the terminal.
 <pre>gnuplot "plot.gp"</pre> 
-  
 
+## LENET Architecture
+
+MNIST Input image: 28x28 pixels, grayscale so number of channels 1
+
+### Layer 1: Convolution 
+Input dimension N: 28x28<br>
+Input channels: 1<br>
+Output channels(Number of filters): 20<br>
+Kernel K = 5, so each filter is a 5x5 square<br>
+Stride 1, padding 0, so output dimension (N-K+1) = 28-5+1 = 24<br>
+
+### Layer 2: Pooling
+Since we are doing max pooling hence no need of wweights.<br>
+Input dimension N: 24x24<br>
+Input channels: 20<br>
+Pooling with kernel: K = 2, stride 2, so output is 12x12<br>
+Output channel: 20<br>
+
+### Layer 3: Convolution
+Input dimension N: 12x12<br>
+Input channels: 20<br>
+Output channels(Number of Filters): 50<br>
+Kernel K = 5, so each filter is a 5x5 square<br>
+Stride 1, padding 0, so output dimension (N-K+1) = 12-5+1 = 8<br>
+
+### Layer 4: Pooling
+Since we are doing max pooling henc no need of weights.<br>
+Input dimension: N = 8x8
+Input channels: 50
+Pooling with kernel: K = 2, stride 2, so output is 4x4
+Output channel: 50.<br>
+
+### Layer 5: Fully Connected
+This layer has an relu layer in it.<br>
+Input dimension N 4x4
+Input channels 50
+Output channels 500, so number of filters 500 -- each filter will produce 1 output channel
+Kernel K = 4, so each filter is a 4x4 square
+Stride 1, padding 0, so output dimension (N-K+1) = 4-4+1 = 1Input dimension N 4x4
+Input channels 50
+Output channels 500, so number of filters 500 -- each filter will produce 1 output channel
+Kernel K = 4, so each filter is a 4x4 square<br>
+Stride 1, padding 0, so output dimension (N-K+1) = 4-4+1 = 1<br>
+
+### Layer 6: Fully Connected 
+Input dimension: N 1x1<br>
+Input channels: 500<br>
+Output channels(Number of filters 10): 10<br>
+Kernel K = 1, so each filter is a 1x1 square<br>
+Stride 1, padding 0, so output size (N-K+1) = 1-1+1 = 1<br>
+
+We get an array of size 10x1 which contains the probability of all the digits in it starting from 0 to 9.
 <!--
 ### Changelog
 The file **Output.txt** saves all the programs run along with its outputs. This file saves outputs across sessions and clever use of this file will allow a user to retrieve the matrices for further processing. -->
