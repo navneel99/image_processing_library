@@ -156,7 +156,11 @@ After running the **make plot** command you can print the graph just by a simple
 <pre>gnuplot "plot.gp"</pre> 
 
 ## LENET Architecture
-
+The Lenet Architecture is used to identify handwritten letter. It is easy to implement and easy to understand. The Layer by Layer implementation information is given below.<br>
+<br>
+The first step is to convert the given MNSIT image to an array of size 28x28. Then we store the array in the .txt file. The normalised form(values from 0-1) will be stored in the text file rather than the pixel values.<br>
+Formula to for normalisation is 1-(Pixel Value)/255.<br>
+<br>
 MNIST Input image: 28x28 pixels, grayscale so number of channels 1
 
 ### Layer 1: Convolution 
